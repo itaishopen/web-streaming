@@ -14,7 +14,8 @@ function imgUrl(path: string | null | undefined, size = 'w92'): string {
 
 @customElement('search-modal')
 export class SearchModal extends LitElement {
-  @property({ type: String }) apiKey = ''
+  // attribute: 'api-key' so Lit observes the kebab-case attribute Vue sets
+  @property({ type: String, attribute: 'api-key' }) apiKey = ''
   @property({ type: Boolean }) open = false
   @property({ type: Boolean }) offline = false
 

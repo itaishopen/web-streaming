@@ -237,7 +237,7 @@ onMounted(() => {
                 v-for="item in inProgress"
                 :key="`${item.media_type}_${item.id}`"
                 class="progress-card"
-                @click="navigate(item)"
+                @card-click="(e: Event) => navigate((e as CustomEvent).detail)"
               >
                 <media-card
                   :item="item"
@@ -253,7 +253,7 @@ onMounted(() => {
             <div v-if="viewMode === 'carousel'">
               <trending-carousel
                 :items="similarItems"
-                @item-click="navigate"
+                @item-select="(e: Event) => navigate((e as CustomEvent).detail)"
               ></trending-carousel>
             </div>
             <div v-else class="cards-grid">
@@ -261,7 +261,7 @@ onMounted(() => {
                 v-for="item in similarItems"
                 :key="`${item.media_type}_${item.id}`"
                 :item="item"
-                @click="navigate(item)"
+                @card-click="(e: Event) => navigate((e as CustomEvent).detail)"
               ></media-card>
             </div>
           </div>
@@ -272,7 +272,7 @@ onMounted(() => {
             <div v-if="viewMode === 'carousel'">
               <trending-carousel
                 :items="trendingMovies"
-                @item-click="navigate"
+                @item-select="(e: Event) => navigate((e as CustomEvent).detail)"
               ></trending-carousel>
             </div>
             <div v-else class="cards-grid">
@@ -280,7 +280,7 @@ onMounted(() => {
                 v-for="item in trendingMovies"
                 :key="item.id"
                 :item="item"
-                @click="navigate(item)"
+                @card-click="(e: Event) => navigate((e as CustomEvent).detail)"
               ></media-card>
             </div>
           </div>
@@ -291,7 +291,7 @@ onMounted(() => {
             <div v-if="viewMode === 'carousel'">
               <trending-carousel
                 :items="trendingSeries"
-                @item-click="navigate"
+                @item-select="(e: Event) => navigate((e as CustomEvent).detail)"
               ></trending-carousel>
             </div>
             <div v-else class="cards-grid">
@@ -299,7 +299,7 @@ onMounted(() => {
                 v-for="item in trendingSeries"
                 :key="item.id"
                 :item="item"
-                @click="navigate(item)"
+                @card-click="(e: Event) => navigate((e as CustomEvent).detail)"
               ></media-card>
             </div>
           </div>
@@ -310,7 +310,7 @@ onMounted(() => {
             <div v-if="viewMode === 'carousel'">
               <trending-carousel
                 :items="topRated"
-                @item-click="navigate"
+                @item-select="(e: Event) => navigate((e as CustomEvent).detail)"
               ></trending-carousel>
             </div>
             <div v-else class="cards-grid">
@@ -318,7 +318,7 @@ onMounted(() => {
                 v-for="item in topRated"
                 :key="`${item.media_type}_${item.id}`"
                 :item="item"
-                @click="navigate(item)"
+                @card-click="(e: Event) => navigate((e as CustomEvent).detail)"
               ></media-card>
             </div>
           </div>

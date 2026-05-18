@@ -5,7 +5,24 @@ import type { MediaItem } from '../types'
 
 @customElement('media-card')
 export class MediaCard extends LitElement {
-  @property({ type: Object }) item: MediaItem | null = null
+  // Accept plain JS object (Vue DOM property) or JSON string (attribute fallback)
+  @property({
+    converter: {
+      fromAttribute: (v: string | null): MediaItem | null => {
+        if (!v) return null
+        try { return JSON.parse(v) as MediaItem } catch { return null }
+      },
+    },
+  })
+  item: MediaItem | string | null = null
+
+  private get _item(): MediaItem | null {
+    const raw = this.item
+    if (typeof raw === 'string') {
+      try { return JSON.parse(raw) as MediaItem } catch { return null }
+    }
+    return raw
+  }
   @property({ type: Number }) progress = 0
   @property({ type: Boolean }) watched = false
   @property({ type: String }) ageRating = ''
@@ -16,43 +33,43 @@ export class MediaCard extends LitElement {
   @state() private _menuY = 0
 
   private get _isAnime(): boolean {
-    if (!this.item) return false
-    const hasAnimeGenre = this.item.genre_ids?.includes(16) ?? false
+    if (!this._item) return false
+    const hasAnimeGenre = this._item.genre_ids?.includes(16) ?? false
     if (!hasAnimeGenre) return false
-    const isJp = this.item.original_language === 'ja'
-    const hasJpOrigin = this.item.origin_country?.includes('JP') ?? false
+    const isJp = this._item.original_language === 'ja'
+    const hasJpOrigin = this._item.origin_country?.includes('JP') ?? false
     return isJp || hasJpOrigin
   }
 
   private get _mediaTypeBadge(): string {
     if (this._isAnime) return 'ANIME'
-    if (this.item?.media_type === 'tv') return 'TV'
-    if (this.item?.media_type === 'movie') return 'HD'
+    if (this._item?.media_type === 'tv') return 'TV'
+    if (this._item?.media_type === 'movie') return 'HD'
     return ''
   }
 
   private get _title(): string {
-    return this.item?.title ?? this.item?.name ?? 'Unknown'
+    return this._item?.title ?? this._item?.name ?? 'Unknown'
   }
 
   private get _year(): string {
-    const date = this.item?.release_date ?? this.item?.first_air_date ?? ''
+    const date = this._item?.release_date ?? this._item?.first_air_date ?? ''
     return date ? date.slice(0, 4) : ''
   }
 
   private get _rating(): string {
-    if (!this.item) return ''
-    return this.item.vote_average ? this.item.vote_average.toFixed(1) : ''
+    if (!this._item) return ''
+    return this._item.vote_average ? this._item.vote_average.toFixed(1) : ''
   }
 
   private _handleClick() {
-    if (this.restricted || !this.item) return
-    this.dispatchEvent(new CustomEvent('card-click', { detail: this.item, bubbles: true, composed: true }))
+    if (this.restricted || !this._item) return
+    this.dispatchEvent(new CustomEvent('card-click', { detail: this._item, bubbles: true, composed: true }))
   }
 
   private _handleContextMenu(e: MouseEvent) {
     e.preventDefault()
-    if (!this.item) return
+    if (!this._item) return
     this._menuX = e.clientX
     this._menuY = e.clientY
     this._menuOpen = true
@@ -65,17 +82,17 @@ export class MediaCard extends LitElement {
   private _markWatched(e: Event) {
     e.stopPropagation()
     this._menuOpen = false
-    if (!this.item) return
-    const key = `${this.item.media_type ?? 'movie'}-${this.item.id}`
-    this.dispatchEvent(new CustomEvent('mark-watched', { detail: { item: this.item, key }, bubbles: true, composed: true }))
+    if (!this._item) return
+    const key = `${this._item.media_type ?? 'movie'}-${this._item.id}`
+    this.dispatchEvent(new CustomEvent('mark-watched', { detail: { item: this._item, key }, bubbles: true, composed: true }))
   }
 
   private _markUnwatched(e: Event) {
     e.stopPropagation()
     this._menuOpen = false
-    if (!this.item) return
-    const key = `${this.item.media_type ?? 'movie'}-${this.item.id}`
-    this.dispatchEvent(new CustomEvent('mark-unwatched', { detail: { item: this.item, key }, bubbles: true, composed: true }))
+    if (!this._item) return
+    const key = `${this._item.media_type ?? 'movie'}-${this._item.id}`
+    this.dispatchEvent(new CustomEvent('mark-unwatched', { detail: { item: this._item, key }, bubbles: true, composed: true }))
   }
 
   private _handleKeyDown(e: KeyboardEvent) {
@@ -380,10 +397,10 @@ export class MediaCard extends LitElement {
   `
 
   render() {
-    if (!this.item) return nothing
+    if (!this._item) return nothing
 
     const badgeClass = this._mediaTypeBadge === 'ANIME' ? 'anime' : this._mediaTypeBadge === 'TV' ? 'tv' : 'hd'
-    const posterSrc = imgUrl(this.item.poster_path, 'w342')
+    const posterSrc = imgUrl(this._item.poster_path, 'w342')
 
     return html`
       <div

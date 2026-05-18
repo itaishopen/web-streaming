@@ -240,7 +240,7 @@ onMounted(() => {
                 @click="navigate(item)"
               >
                 <media-card
-                  :item="JSON.stringify(item)"
+                  :item="item"
                   :progress="progressPct(item)"
                 ></media-card>
               </div>
@@ -252,7 +252,7 @@ onMounted(() => {
             <h2 class="section-title">Similar To What You Watched</h2>
             <div v-if="viewMode === 'carousel'">
               <trending-carousel
-                :items="JSON.stringify(similarItems)"
+                :items="similarItems"
                 @item-click="navigate"
               ></trending-carousel>
             </div>
@@ -260,7 +260,7 @@ onMounted(() => {
               <media-card
                 v-for="item in similarItems"
                 :key="`${item.media_type}_${item.id}`"
-                :item="JSON.stringify(item)"
+                :item="item"
                 @click="navigate(item)"
               ></media-card>
             </div>
@@ -271,7 +271,7 @@ onMounted(() => {
             <h2 class="section-title">Trending Movies</h2>
             <div v-if="viewMode === 'carousel'">
               <trending-carousel
-                :items="JSON.stringify(trendingMovies)"
+                :items="trendingMovies"
                 @item-click="navigate"
               ></trending-carousel>
             </div>
@@ -279,7 +279,7 @@ onMounted(() => {
               <media-card
                 v-for="item in trendingMovies"
                 :key="item.id"
-                :item="JSON.stringify(item)"
+                :item="item"
                 @click="navigate(item)"
               ></media-card>
             </div>
@@ -290,7 +290,7 @@ onMounted(() => {
             <h2 class="section-title">Trending Series</h2>
             <div v-if="viewMode === 'carousel'">
               <trending-carousel
-                :items="JSON.stringify(trendingSeries)"
+                :items="trendingSeries"
                 @item-click="navigate"
               ></trending-carousel>
             </div>
@@ -298,7 +298,7 @@ onMounted(() => {
               <media-card
                 v-for="item in trendingSeries"
                 :key="item.id"
-                :item="JSON.stringify(item)"
+                :item="item"
                 @click="navigate(item)"
               ></media-card>
             </div>
@@ -309,7 +309,7 @@ onMounted(() => {
             <h2 class="section-title">Top Rated</h2>
             <div v-if="viewMode === 'carousel'">
               <trending-carousel
-                :items="JSON.stringify(topRated)"
+                :items="topRated"
                 @item-click="navigate"
               ></trending-carousel>
             </div>
@@ -317,7 +317,7 @@ onMounted(() => {
               <media-card
                 v-for="item in topRated"
                 :key="`${item.media_type}_${item.id}`"
-                :item="JSON.stringify(item)"
+                :item="item"
                 @click="navigate(item)"
               ></media-card>
             </div>

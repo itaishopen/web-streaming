@@ -15,3 +15,27 @@ Object.defineProperty(global, 'localStorage', { value: localStorageMock })
 
 // Mock fetch globally
 global.fetch = jest.fn()
+
+// Polyfill Blob.prototype.text for jsdom (jsdom does not implement it)
+if (typeof Blob !== 'undefined' && !Blob.prototype.text) {
+  Blob.prototype.text = function (): Promise<string> {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader()
+      reader.onload = () => resolve(reader.result as string)
+      reader.onerror = () => reject(reader.error)
+      reader.readAsText(this)
+    })
+  }
+}
+
+// Polyfill File.prototype.text for jsdom
+if (typeof File !== 'undefined' && !File.prototype.text) {
+  File.prototype.text = function (): Promise<string> {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader()
+      reader.onload = () => resolve(reader.result as string)
+      reader.onerror = () => reject(reader.error)
+      reader.readAsText(this)
+    })
+  }
+}

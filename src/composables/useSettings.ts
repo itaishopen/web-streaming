@@ -1,6 +1,7 @@
 import { ref } from 'vue'
 import { storage, STORAGE_KEYS } from '../utils/storage'
 import { applyAccentColor } from '../utils/appearance'
+import { VALID_SOURCE_IDS, DEFAULT_PLAYER_SOURCE } from '../utils/api'
 import type { AppSettings } from '../types'
 
 const DEFAULTS: AppSettings = {
@@ -55,7 +56,10 @@ export function useSettings() {
       introSkipMode:      storage.get<AppSettings['introSkipMode']>(STORAGE_KEYS.INTRO_SKIP_MODE) ?? DEFAULTS.introSkipMode,
       ratingCountry:      storage.get<string>(STORAGE_KEYS.RATING_COUNTRY)      ?? DEFAULTS.ratingCountry,
       maxAgeRating:       storage.get<number>(STORAGE_KEYS.MAX_AGE_RATING)      ?? DEFAULTS.maxAgeRating,
-      playerSource:       storage.get<string>(STORAGE_KEYS.PLAYER_SOURCE)       ?? DEFAULTS.playerSource,
+      playerSource:       (() => {
+        const stored = storage.get<string>(STORAGE_KEYS.PLAYER_SOURCE) ?? DEFAULTS.playerSource
+        return VALID_SOURCE_IDS.has(stored) ? stored : DEFAULT_PLAYER_SOURCE
+      })(),
       subtitlesEnabled:   storage.get<boolean>(STORAGE_KEYS.SUBTITLES_ENABLED)  ?? DEFAULTS.subtitlesEnabled,
       defaultSubtitleLang:storage.get<string>(STORAGE_KEYS.DEFAULT_SUBTITLE_LANG) ?? DEFAULTS.defaultSubtitleLang,
       homeViewMode:       storage.get<AppSettings['homeViewMode']>(STORAGE_KEYS.HOME_VIEW_MODE) ?? DEFAULTS.homeViewMode,

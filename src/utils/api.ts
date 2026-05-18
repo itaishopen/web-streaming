@@ -17,17 +17,17 @@ export function imgUrl(path: string | null | undefined, size = 'w500'): string {
 
 export const PLAYER_SOURCES: PlayerSource[] = [
   {
-    id: 'vidsrc',
-    label: 'VidSrc',
-    getMovieUrl: (id) => `https://vidsrc.cc/v2/embed/movie/${id}`,
-    getTvUrl: (id, season, ep) => `https://vidsrc.cc/v2/embed/tv/${id}/${season}/${ep}`,
-    supportsProgress: false,
-  },
-  {
     id: 'autoembed',
     label: 'AutoEmbed',
     getMovieUrl: (id) => `https://player.autoembed.cc/embed/movie/${id}`,
     getTvUrl: (id, season, ep) => `https://player.autoembed.cc/embed/tv/${id}/${season}/${ep}`,
+    supportsProgress: false,
+  },
+  {
+    id: 'vidsrc',
+    label: 'VidSrc',
+    getMovieUrl: (id) => `https://vidsrc.cc/v2/embed/movie/${id}`,
+    getTvUrl: (id, season, ep) => `https://vidsrc.cc/v2/embed/tv/${id}/${season}/${ep}`,
     supportsProgress: false,
   },
   {
@@ -59,20 +59,6 @@ export const PLAYER_SOURCES: PlayerSource[] = [
     supportsProgress: false,
   },
   {
-    id: 'videasy',
-    label: 'Videasy',
-    getMovieUrl: (id) => `https://player.videasy.net/movie/${id}`,
-    getTvUrl: (id, season, ep) => `https://player.videasy.net/tv/${id}/${season}/${ep}`,
-    supportsProgress: true,
-  },
-  {
-    id: '2embed',
-    label: '2Embed',
-    getMovieUrl: (id) => `https://www.2embed.cc/embed/${id}`,
-    getTvUrl: (id, season, ep) => `https://www.2embed.cc/embedtv/${id}&s=${season}&e=${ep}`,
-    supportsProgress: false,
-  },
-  {
     id: 'allmanga',
     label: 'AllManga',
     getMovieUrl: (_id) => '',
@@ -80,6 +66,11 @@ export const PLAYER_SOURCES: PlayerSource[] = [
     supportsProgress: false,
   },
 ]
+
+export const DEFAULT_PLAYER_SOURCE = 'autoembed'
+
+/** Valid source IDs — used to migrate stale localStorage values. */
+export const VALID_SOURCE_IDS = new Set(PLAYER_SOURCES.map((s) => s.id))
 
 // ---------------------------------------------------------------------------
 // Request queue — max 4 concurrent

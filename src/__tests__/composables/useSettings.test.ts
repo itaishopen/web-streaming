@@ -78,11 +78,18 @@ describe('loadSettings()', () => {
     expect(settings.value.compactMode).toBe(true)
   })
 
-  it('reads existing playerSource from localStorage', () => {
-    storage.set(STORAGE_KEYS.PLAYER_SOURCE, 'embedsu')
+  it('reads existing playerSource from localStorage when it is a valid source', () => {
+    storage.set(STORAGE_KEYS.PLAYER_SOURCE, 'vidsrc')
     const { loadSettings, settings } = useSettings()
     loadSettings()
-    expect(settings.value.playerSource).toBe('embedsu')
+    expect(settings.value.playerSource).toBe('vidsrc')
+  })
+
+  it('resets playerSource to default when stored value is no longer a valid source', () => {
+    storage.set(STORAGE_KEYS.PLAYER_SOURCE, 'videasy')
+    const { loadSettings, settings } = useSettings()
+    loadSettings()
+    expect(settings.value.playerSource).toBe('autoembed')
   })
 
   it('reads existing homeViewMode from localStorage', () => {

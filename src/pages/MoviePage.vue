@@ -42,13 +42,6 @@ const playerUrl = computed(() => {
   return getSourceUrl(playerSource.value, 'movie', id.value)
 })
 
-const iframeSandbox = computed(() => {
-  const src = PLAYER_SOURCES.find((s) => s.id === playerSource.value)
-  return src?.sandboxed
-    ? 'allow-scripts allow-same-origin allow-forms allow-presentation allow-top-navigation-by-user-activation'
-    : undefined
-})
-
 const progressKey = computed(() => `movie_${id.value}`)
 
 const savedStatus = computed(() => isSaved(id.value, 'movie'))
@@ -368,7 +361,6 @@ watch(playing, (val) => {
         <iframe
           v-if="playerUrl"
           :src="playerUrl"
-          :sandbox="iframeSandbox"
           allowfullscreen
           allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
           @load="onIframeLoad"

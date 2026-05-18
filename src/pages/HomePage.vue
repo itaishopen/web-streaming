@@ -8,19 +8,8 @@ import { loadHomeLayout, loadHomeViewMode } from '../utils/homeLayout'
 import { storage, STORAGE_KEYS } from '../utils/storage'
 import type { MediaItem, HomeRow } from '../types'
 
-const { settings } = useSettings()
-const {
-  saved,
-  history,
-  progress,
-  inProgress,
-  isSaved,
-  saveItem,
-  removeItem,
-  markWatched,
-  markUnwatched,
-  isWatched,
-} = useLibrary()
+const { settings, loadSettings, saveSettings } = useSettings()
+const { history, progress, inProgress } = useLibrary()
 const router = useRouter()
 
 const trendingMovies = ref<MediaItem[]>([])
@@ -29,6 +18,7 @@ const topRated = ref<MediaItem[]>([])
 const similarItems = ref<MediaItem[]>([])
 const loading = ref(true)
 const offline = ref(false)
+const apiError = ref<string | null>(null)
 const homeRows = ref<HomeRow[]>([])
 const viewMode = ref<'carousel' | 'list'>('carousel')
 
@@ -130,8 +120,14 @@ async function loadTrending() {
     const lastWatched = history.value[0]?.item
     if (lastWatched) fetchSimilar(lastWatched)
   } catch (err) {
-    offline.value = !navigator.onLine
-    console.error('Failed to load trending:', err)
+    const msg = err instanceof Error ? err.message : String(err)
+    if (msg.includes('401')) {
+      apiError.value = 'Invalid API token — please check your TMDB Read Access Token in Settings.'
+    } else if (!navigator.onLine) {
+      offline.value = true
+    } else {
+      apiError.value = `Failed to load content: ${msg}`
+    }
   } finally {
     loading.value = false
   }
@@ -142,7 +138,16 @@ function progressPct(item: MediaItem): number {
   return progress.value[key]?.pct ?? 0
 }
 
+function onSetupComplete(e: Event) {
+  const key = (e as CustomEvent<{ apiKey: string }>).detail?.apiKey ?? ''
+  saveSettings('apiKey', key)
+  apiError.value = null
+  if (key) loadTrending()
+  else loading.value = false
+}
+
 onMounted(() => {
+  loadSettings()
   homeRows.value = loadHomeLayout()
   viewMode.value = loadHomeViewMode()
 
@@ -159,7 +164,7 @@ onMounted(() => {
     <!-- No API Key: setup screen -->
     <template v-if="!settings.apiKey">
       <div class="setup-wrapper">
-        <setup-screen @setup-complete="(key: string) => { settings.apiKey = key; loadTrending() }" />
+        <setup-screen @setup-complete="onSetupComplete"></setup-screen>
       </div>
     </template>
 
@@ -170,8 +175,17 @@ onMounted(() => {
       </div>
     </template>
 
-    <!-- Offline banner -->
+    <!-- Content -->
     <template v-else>
+      <!-- API error banner -->
+      <div v-if="apiError" class="error-banner" role="alert">
+        <span class="error-banner__icon">&#9888;</span>
+        <span class="error-banner__msg">{{ apiError }}</span>
+        <button class="error-banner__action btn btn-ghost" @click="router.push('/settings')">Open Settings</button>
+        <button class="error-banner__dismiss" @click="apiError = null" aria-label="Dismiss">&#10005;</button>
+      </div>
+
+      <!-- Offline banner -->
       <div v-if="offline" class="offline-banner" role="alert">
         <span>You appear to be offline. Showing cached content.</span>
       </div>
@@ -457,6 +471,43 @@ onMounted(() => {
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
+
+/* ---- Error banner ---- */
+.error-banner {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1.25rem;
+  background: rgba(229, 9, 20, 0.12);
+  border-bottom: 1px solid rgba(229, 9, 20, 0.4);
+  color: #f1f1f1;
+  font-size: 0.9rem;
+  flex-wrap: wrap;
+}
+.error-banner__icon { font-size: 1.1rem; color: #e50914; flex-shrink: 0; }
+.error-banner__msg  { flex: 1; min-width: 200px; }
+.error-banner__action {
+  padding: 0.3rem 0.8rem;
+  font-size: 0.82rem;
+  border: 1px solid rgba(255,255,255,0.25);
+  background: transparent;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.error-banner__action:hover { background: rgba(255,255,255,0.1); }
+.error-banner__dismiss {
+  background: transparent;
+  border: none;
+  color: #888;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0.2rem 0.4rem;
+  line-height: 1;
+  margin-left: auto;
+}
+.error-banner__dismiss:hover { color: #fff; }
 
 /* ---- Offline banner ---- */
 .offline-banner {

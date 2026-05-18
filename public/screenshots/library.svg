@@ -1,0 +1,289 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" font-family="system-ui, -apple-system, sans-serif">
+  <defs>
+    <linearGradient id="p1g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2a2a4a"/>
+      <stop offset="100%" stop-color="#111122"/>
+    </linearGradient>
+    <linearGradient id="p2g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3a1818"/>
+      <stop offset="100%" stop-color="#1a0808"/>
+    </linearGradient>
+    <linearGradient id="p3g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#182830"/>
+      <stop offset="100%" stop-color="#0c1418"/>
+    </linearGradient>
+    <linearGradient id="p4g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#282018"/>
+      <stop offset="100%" stop-color="#14100c"/>
+    </linearGradient>
+    <linearGradient id="p5g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1e2a2a"/>
+      <stop offset="100%" stop-color="#0f1515"/>
+    </linearGradient>
+    <linearGradient id="p6g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2a1a2a"/>
+      <stop offset="100%" stop-color="#150d15"/>
+    </linearGradient>
+    <linearGradient id="p7g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a2a18"/>
+      <stop offset="100%" stop-color="#0d150c"/>
+    </linearGradient>
+    <linearGradient id="p8g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#28281a"/>
+      <stop offset="100%" stop-color="#14140c"/>
+    </linearGradient>
+    <linearGradient id="p9g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a2030"/>
+      <stop offset="100%" stop-color="#0d1018"/>
+    </linearGradient>
+    <linearGradient id="p10g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#301010"/>
+      <stop offset="100%" stop-color="#180808"/>
+    </linearGradient>
+    <linearGradient id="pb35" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#e50914"/>
+      <stop offset="35%" stop-color="#e50914"/>
+      <stop offset="35%" stop-color="#2a2a2a"/>
+      <stop offset="100%" stop-color="#2a2a2a"/>
+    </linearGradient>
+    <linearGradient id="pb68" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#e50914"/>
+      <stop offset="68%" stop-color="#e50914"/>
+      <stop offset="68%" stop-color="#2a2a2a"/>
+      <stop offset="100%" stop-color="#2a2a2a"/>
+    </linearGradient>
+    <linearGradient id="pb20" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#e50914"/>
+      <stop offset="20%" stop-color="#e50914"/>
+      <stop offset="20%" stop-color="#2a2a2a"/>
+      <stop offset="100%" stop-color="#2a2a2a"/>
+    </linearGradient>
+    <linearGradient id="pb82" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#e50914"/>
+      <stop offset="82%" stop-color="#e50914"/>
+      <stop offset="82%" stop-color="#2a2a2a"/>
+      <stop offset="100%" stop-color="#2a2a2a"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1280" height="720" fill="#0a0a0a"/>
+
+  <!-- ── SIDEBAR ─────────────────────────────────── -->
+  <rect x="0" y="0" width="68" height="720" fill="#111111"/>
+  <polygon points="20,16 20,44 46,30" fill="#e50914"/>
+  <rect x="10" y="60" width="48" height="1" fill="#222"/>
+
+  <!-- Home icon -->
+  <polygon points="34,84 44,93 44,106 24,106 24,93" fill="none" stroke="#555" stroke-width="1.5" stroke-linejoin="round"/>
+  <polygon points="34,84 46,95 22,95" fill="#555"/>
+  <rect x="28" y="96" width="12" height="10" rx="1" fill="#555"/>
+  <text x="34" y="124" fill="#555" font-size="9" text-anchor="middle">HOME</text>
+
+  <!-- Search icon -->
+  <circle cx="34" cy="155" r="7" fill="none" stroke="#555" stroke-width="1.8"/>
+  <line x1="39" y1="160" x2="45" y2="166" stroke="#555" stroke-width="1.8" stroke-linecap="round"/>
+  <text x="34" y="178" fill="#555" font-size="9" text-anchor="middle">SEARCH</text>
+
+  <!-- Library icon (ACTIVE) -->
+  <rect x="14" y="200" width="40" height="40" rx="8" fill="#e50914" opacity="0.15"/>
+  <rect x="22" y="207" width="4" height="20" rx="1" fill="#e50914"/>
+  <rect x="30" y="204" width="4" height="23" rx="1" fill="#e50914"/>
+  <rect x="38" y="209" width="8" height="18" rx="1" fill="#e50914"/>
+  <text x="34" y="250" fill="#e50914" font-size="9" text-anchor="middle" font-weight="600">LIBRARY</text>
+
+  <!-- Settings icon -->
+  <circle cx="34" cy="295" r="5.5" fill="none" stroke="#555" stroke-width="1.8"/>
+  <path d="M34 280 L34 283.5 M34 306.5 L34 310 M19 295 L22.5 295 M45.5 295 L49 295 M23.5 284.5 L26 287 M42 303 L44.5 305.5 M23.5 305.5 L26 303 M42 287 L44.5 284.5" stroke="#555" stroke-width="1.8" stroke-linecap="round"/>
+  <text x="34" y="318" fill="#555" font-size="9" text-anchor="middle">SETTINGS</text>
+
+  <!-- ── MAIN CONTENT ────────────────────────────── -->
+  <!-- Page header -->
+  <text x="100" y="52" fill="#f1f1f1" font-size="28" font-weight="700">My Library</text>
+  <rect x="100" y="60" width="1" height="1" fill="transparent"/>
+
+  <!-- Search bar in header -->
+  <rect x="1060" y="18" width="192" height="34" rx="17" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1"/>
+  <text x="1080" y="40" fill="#555" font-size="13">🔍  Filter...</text>
+
+  <!-- ── CONTINUE WATCHING ─────────────────────────── -->
+  <rect x="100" y="74" width="1" height="1" fill="transparent"/>
+  <text x="100" y="92" fill="#f1f1f1" font-size="16" font-weight="700">Continue Watching</text>
+  <rect x="100" y="96" width="175" height="2.5" rx="1.25" fill="#e50914"/>
+
+  <!-- 4 continue-watching cards -->
+  <!-- Card CW1 (35%) -->
+  <rect x="100" y="108" width="240" height="160" rx="8" fill="#1a1a1a"/>
+  <rect x="100" y="108" width="240" height="120" rx="8" fill="url(#p1g)"/>
+  <rect x="100" y="220" width="240" height="8" fill="#1a1a1a"/>
+  <!-- Thumb art placeholder lines -->
+  <rect x="115" y="125" width="140" height="3" rx="1" fill="#3a3a6a" opacity="0.6"/>
+  <rect x="115" y="135" width="100" height="3" rx="1" fill="#3a3a6a" opacity="0.4"/>
+  <rect x="115" y="148" width="180" height="50" rx="4" fill="#1e1e3e" opacity="0.5"/>
+  <!-- Play overlay -->
+  <circle cx="220" cy="163" r="18" fill="#000" opacity="0.55"/>
+  <polygon points="213,155 213,171 229,163" fill="#fff" opacity="0.85"/>
+  <text x="220" y="236" fill="#f1f1f1" font-size="12" font-weight="600" text-anchor="middle">Inception</text>
+  <text x="220" y="250" fill="#888" font-size="10" text-anchor="middle">58m remaining</text>
+  <!-- Progress bar -->
+  <rect x="100" y="256" width="240" height="4" rx="2" fill="url(#pb35)"/>
+  <text x="100" y="270" fill="#555" font-size="10">35%</text>
+
+  <!-- Card CW2 (68%) -->
+  <rect x="352" y="108" width="240" height="160" rx="8" fill="#1a1a1a"/>
+  <rect x="352" y="108" width="240" height="120" rx="8" fill="url(#p2g)"/>
+  <rect x="352" y="220" width="240" height="8" fill="#1a1a1a"/>
+  <rect x="367" y="125" width="140" height="3" rx="1" fill="#6a3a3a" opacity="0.6"/>
+  <rect x="367" y="148" width="180" height="50" rx="4" fill="#3e1e1e" opacity="0.5"/>
+  <circle cx="472" cy="163" r="18" fill="#000" opacity="0.55"/>
+  <polygon points="465,155 465,171 481,163" fill="#fff" opacity="0.85"/>
+  <text x="472" y="236" fill="#f1f1f1" font-size="12" font-weight="600" text-anchor="middle">The Batman</text>
+  <text x="472" y="250" fill="#888" font-size="10" text-anchor="middle">53m remaining</text>
+  <rect x="352" y="256" width="240" height="4" rx="2" fill="url(#pb68)"/>
+  <text x="352" y="270" fill="#555" font-size="10">68%</text>
+
+  <!-- Card CW3 (20%) -->
+  <rect x="604" y="108" width="240" height="160" rx="8" fill="#1a1a1a"/>
+  <rect x="604" y="108" width="240" height="120" rx="8" fill="url(#p3g)"/>
+  <rect x="604" y="220" width="240" height="8" fill="#1a1a1a"/>
+  <rect x="619" y="125" width="140" height="3" rx="1" fill="#3a5a6a" opacity="0.6"/>
+  <rect x="619" y="148" width="180" height="50" rx="4" fill="#1e2e3e" opacity="0.5"/>
+  <circle cx="724" cy="163" r="18" fill="#000" opacity="0.55"/>
+  <polygon points="717,155 717,171 733,163" fill="#fff" opacity="0.85"/>
+  <text x="724" y="236" fill="#f1f1f1" font-size="12" font-weight="600" text-anchor="middle">Dune: Part Two</text>
+  <text x="724" y="250" fill="#888" font-size="10" text-anchor="middle">2h 13m remaining</text>
+  <rect x="604" y="256" width="240" height="4" rx="2" fill="url(#pb20)"/>
+  <text x="604" y="270" fill="#555" font-size="10">20%</text>
+
+  <!-- Card CW4 (82%) -->
+  <rect x="856" y="108" width="240" height="160" rx="8" fill="#1a1a1a"/>
+  <rect x="856" y="108" width="240" height="120" rx="8" fill="url(#p4g)"/>
+  <rect x="856" y="220" width="240" height="8" fill="#1a1a1a"/>
+  <rect x="871" y="125" width="140" height="3" rx="1" fill="#5a5a3a" opacity="0.6"/>
+  <rect x="871" y="148" width="180" height="50" rx="4" fill="#2e2e1e" opacity="0.5"/>
+  <circle cx="976" cy="163" r="18" fill="#000" opacity="0.55"/>
+  <polygon points="969,155 969,171 985,163" fill="#fff" opacity="0.85"/>
+  <text x="976" y="236" fill="#f1f1f1" font-size="12" font-weight="600" text-anchor="middle">Oppenheimer</text>
+  <text x="976" y="250" fill="#888" font-size="10" text-anchor="middle">32m remaining</text>
+  <rect x="856" y="256" width="240" height="4" rx="2" fill="url(#pb82)"/>
+  <text x="856" y="270" fill="#555" font-size="10">82%</text>
+
+  <!-- ── MY WATCHLIST ────────────────────────────── -->
+  <rect x="100" y="292" width="1" height="1" fill="transparent"/>
+  <!-- Section header row -->
+  <text x="100" y="310" fill="#f1f1f1" font-size="16" font-weight="700">My Watchlist</text>
+  <rect x="190" y="302" width="30" height="18" rx="9" fill="#e50914"/>
+  <text x="205" y="315" fill="#fff" font-size="11" font-weight="600" text-anchor="middle">12</text>
+  <text x="234" y="310" fill="#555" font-size="14">items</text>
+  <rect x="100" y="314" width="130" height="2.5" rx="1.25" fill="#e50914"/>
+  <!-- Sort dropdown -->
+  <rect x="1080" y="296" width="160" height="32" rx="6" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1"/>
+  <text x="1100" y="316" fill="#888" font-size="12">Sort: Date Added ▾</text>
+
+  <!-- Watchlist grid: 3 × 2 -->
+  <!-- Row 1 -->
+  <!-- WL Card 1 -->
+  <rect x="100" y="326" width="170" height="255" rx="8" fill="#1a1a1a"/>
+  <rect x="100" y="326" width="170" height="210" rx="8" fill="url(#p5g)"/>
+  <rect x="100" y="527" width="170" height="9" fill="#1a1a1a"/>
+  <rect x="115" y="345" width="130" height="80" rx="4" fill="#1e2e2e" opacity="0.6"/>
+  <rect x="115" y="440" width="100" height="60" rx="4" fill="#0f1a1a" opacity="0.5"/>
+  <text x="185" y="550" fill="#f1f1f1" font-size="12" font-weight="600" text-anchor="middle">The Last of Us</text>
+  <text x="185" y="565" fill="#888" font-size="10" text-anchor="middle">TV · 2023</text>
+  <text x="185" y="578" fill="#555" font-size="10" text-anchor="middle">8.8 ★</text>
+
+  <!-- WL Card 2 -->
+  <rect x="282" y="326" width="170" height="255" rx="8" fill="#1a1a1a"/>
+  <rect x="282" y="326" width="170" height="210" rx="8" fill="url(#p6g)"/>
+  <rect x="282" y="527" width="170" height="9" fill="#1a1a1a"/>
+  <rect x="297" y="345" width="130" height="80" rx="4" fill="#2e1e2e" opacity="0.6"/>
+  <rect x="297" y="440" width="100" height="60" rx="4" fill="#1a0f1a" opacity="0.5"/>
+  <text x="367" y="550" fill="#f1f1f1" font-size="12" font-weight="600" text-anchor="middle">Poor Things</text>
+  <text x="367" y="565" fill="#888" font-size="10" text-anchor="middle">Movie · 2023</text>
+  <text x="367" y="578" fill="#555" font-size="10" text-anchor="middle">7.8 ★</text>
+
+  <!-- WL Card 3 -->
+  <rect x="464" y="326" width="170" height="255" rx="8" fill="#1a1a1a"/>
+  <rect x="464" y="326" width="170" height="210" rx="8" fill="url(#p7g)"/>
+  <rect x="464" y="527" width="170" height="9" fill="#1a1a1a"/>
+  <rect x="479" y="345" width="130" height="80" rx="4" fill="#1e2e1e" opacity="0.6"/>
+  <rect x="479" y="440" width="100" height="60" rx="4" fill="#0f1a0f" opacity="0.5"/>
+  <text x="549" y="550" fill="#f1f1f1" font-size="12" font-weight="600" text-anchor="middle">Severance</text>
+  <text x="549" y="565" fill="#888" font-size="10" text-anchor="middle">TV · 2022</text>
+  <text x="549" y="578" fill="#555" font-size="10" text-anchor="middle">8.7 ★</text>
+
+  <!-- Row 2 (partially visible) -->
+  <!-- WL Card 4 -->
+  <rect x="100" y="590" width="170" height="125" rx="8" fill="#1a1a1a"/>
+  <rect x="100" y="590" width="170" height="125" rx="8" fill="url(#p8g)" opacity="0.8"/>
+  <text x="185" y="670" fill="#f1f1f1" font-size="12" font-weight="600" text-anchor="middle">Fallout</text>
+  <text x="185" y="685" fill="#888" font-size="10" text-anchor="middle">TV · 2024 · 8.5 ★</text>
+
+  <!-- WL Card 5 -->
+  <rect x="282" y="590" width="170" height="125" rx="8" fill="#1a1a1a"/>
+  <rect x="282" y="590" width="170" height="125" rx="8" fill="url(#p9g)" opacity="0.8"/>
+  <text x="367" y="670" fill="#f1f1f1" font-size="12" font-weight="600" text-anchor="middle">Shogun</text>
+  <text x="367" y="685" fill="#888" font-size="10" text-anchor="middle">TV · 2024 · 8.7 ★</text>
+
+  <!-- WL Card 6 -->
+  <rect x="464" y="590" width="170" height="125" rx="8" fill="#1a1a1a"/>
+  <rect x="464" y="590" width="170" height="125" rx="8" fill="url(#p10g)" opacity="0.8"/>
+  <text x="549" y="670" fill="#f1f1f1" font-size="12" font-weight="600" text-anchor="middle">The Boys</text>
+  <text x="549" y="685" fill="#888" font-size="10" text-anchor="middle">TV · 2019 · 8.7 ★</text>
+
+  <!-- ── WATCH HISTORY ───────────────────────────── -->
+  <text x="700" y="310" fill="#f1f1f1" font-size="16" font-weight="700">Watch History</text>
+  <rect x="700" y="314" width="130" height="2.5" rx="1.25" fill="#e50914"/>
+
+  <!-- History items (3 horizontal rows) -->
+  <!-- History Item 1 -->
+  <rect x="700" y="326" width="568" height="92" rx="8" fill="#111111" stroke="#1e1e1e" stroke-width="1"/>
+  <!-- Thumbnail -->
+  <rect x="712" y="336" width="60" height="72" rx="5" fill="url(#p1g)"/>
+  <rect x="720" y="345" width="44" height="25" rx="3" fill="#2a2a5a" opacity="0.7"/>
+  <polygon points="737,355 737,365 747,360" fill="#fff" opacity="0.6"/>
+  <!-- Text -->
+  <text x="786" y="351" fill="#f1f1f1" font-size="13" font-weight="600">Inception</text>
+  <rect x="786" y="358" width="42" height="18" rx="9" fill="#1a2a3a"/>
+  <text x="807" y="371" fill="#6aadff" font-size="10" text-anchor="middle">Movie</text>
+  <text x="786" y="390" fill="#888" font-size="12">Christopher Nolan · 2010 · 2h 28m</text>
+  <text x="786" y="406" fill="#555" font-size="11">Watched 3 days ago  ·  100% completed</text>
+  <!-- Rewatch button -->
+  <rect x="1190" y="345" width="66" height="28" rx="14" fill="#1a1a1a" stroke="#333" stroke-width="1"/>
+  <text x="1223" y="363" fill="#888" font-size="11" text-anchor="middle">▶ Rewatch</text>
+
+  <!-- History Item 2 -->
+  <rect x="700" y="428" width="568" height="92" rx="8" fill="#111111" stroke="#1e1e1e" stroke-width="1"/>
+  <rect x="712" y="438" width="60" height="72" rx="5" fill="url(#p5g)"/>
+  <rect x="720" y="447" width="44" height="25" rx="3" fill="#1e2e2e" opacity="0.7"/>
+  <polygon points="737,457 737,467 747,462" fill="#fff" opacity="0.6"/>
+  <text x="786" y="453" fill="#f1f1f1" font-size="13" font-weight="600">The Last of Us  –  S1 E4</text>
+  <rect x="786" y="460" width="24" height="18" rx="9" fill="#1a2a1a"/>
+  <text x="798" y="473" fill="#6aff8a" font-size="10" text-anchor="middle">TV</text>
+  <text x="786" y="492" fill="#888" font-size="12">HBO · 2023 · 48m</text>
+  <text x="786" y="508" fill="#555" font-size="11">Watched 5 days ago  ·  In progress</text>
+  <rect x="1190" y="447" width="66" height="28" rx="14" fill="#1a1a1a" stroke="#333" stroke-width="1"/>
+  <text x="1223" y="465" fill="#888" font-size="11" text-anchor="middle">▶ Resume</text>
+
+  <!-- History Item 3 -->
+  <rect x="700" y="530" width="568" height="92" rx="8" fill="#111111" stroke="#1e1e1e" stroke-width="1"/>
+  <rect x="712" y="540" width="60" height="72" rx="5" fill="url(#p2g)"/>
+  <rect x="720" y="549" width="44" height="25" rx="3" fill="#2e1e1e" opacity="0.7"/>
+  <polygon points="737,559 737,569 747,564" fill="#fff" opacity="0.6"/>
+  <text x="786" y="555" fill="#f1f1f1" font-size="13" font-weight="600">The Batman</text>
+  <rect x="786" y="562" width="42" height="18" rx="9" fill="#1a2a3a"/>
+  <text x="807" y="575" fill="#6aadff" font-size="10" text-anchor="middle">Movie</text>
+  <text x="786" y="594" fill="#888" font-size="12">Matt Reeves · 2022 · 2h 56m</text>
+  <text x="786" y="610" fill="#555" font-size="11">Watched 1 week ago  ·  100% completed</text>
+  <rect x="1190" y="549" width="66" height="28" rx="14" fill="#1a1a1a" stroke="#333" stroke-width="1"/>
+  <text x="1223" y="567" fill="#888" font-size="11" text-anchor="middle">▶ Rewatch</text>
+
+  <!-- History item 4 (partially visible) -->
+  <rect x="700" y="632" width="568" height="80" rx="8" fill="#111111" stroke="#1e1e1e" stroke-width="1"/>
+  <rect x="712" y="642" width="60" height="68" rx="5" fill="url(#p4g)"/>
+  <rect x="720" y="651" width="44" height="25" rx="3" fill="#2e2e1e" opacity="0.7"/>
+  <text x="786" y="657" fill="#f1f1f1" font-size="13" font-weight="600">Oppenheimer</text>
+  <rect x="786" y="664" width="42" height="18" rx="9" fill="#1a2a3a"/>
+  <text x="807" y="677" fill="#6aadff" font-size="10" text-anchor="middle">Movie</text>
+  <text x="786" y="696" fill="#555" font-size="11">Watched 2 weeks ago  ·  100% completed</text>
+</svg>

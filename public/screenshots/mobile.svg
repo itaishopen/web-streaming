@@ -1,0 +1,228 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="1138" viewBox="0 0 640 1138" font-family="system-ui, -apple-system, sans-serif">
+  <defs>
+    <!-- Spotlight gradient (top-to-bottom) -->
+    <linearGradient id="spotBg" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#1a1820"/>
+      <stop offset="100%" stop-color="#2a2820"/>
+    </linearGradient>
+    <linearGradient id="spotOverlay" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0a0a0a" stop-opacity="0.2"/>
+      <stop offset="60%" stop-color="#0a0a0a" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#0a0a0a" stop-opacity="1"/>
+    </linearGradient>
+    <!-- Poster gradients -->
+    <linearGradient id="mp1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2a2a4a"/>
+      <stop offset="100%" stop-color="#111122"/>
+    </linearGradient>
+    <linearGradient id="mp2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3a1818"/>
+      <stop offset="100%" stop-color="#1a0808"/>
+    </linearGradient>
+    <linearGradient id="mp3" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#182830"/>
+      <stop offset="100%" stop-color="#0c1418"/>
+    </linearGradient>
+    <linearGradient id="mp4" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#282018"/>
+      <stop offset="100%" stop-color="#14100c"/>
+    </linearGradient>
+    <linearGradient id="mp5" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1e2a2a"/>
+      <stop offset="100%" stop-color="#0f1515"/>
+    </linearGradient>
+    <linearGradient id="mp6" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2a1a2a"/>
+      <stop offset="100%" stop-color="#150d15"/>
+    </linearGradient>
+    <linearGradient id="mp7" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a2a18"/>
+      <stop offset="100%" stop-color="#0d150c"/>
+    </linearGradient>
+    <linearGradient id="mp8" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#28281a"/>
+      <stop offset="100%" stop-color="#14140c"/>
+    </linearGradient>
+    <!-- Status bar gradient -->
+    <linearGradient id="statusGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0a0a0a" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#0a0a0a" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="640" height="1138" fill="#0a0a0a"/>
+
+  <!-- ── STATUS BAR ───────────────────────────────── -->
+  <rect x="0" y="0" width="640" height="44" fill="#0a0a0a"/>
+  <!-- Time -->
+  <text x="32" y="28" fill="#f1f1f1" font-size="15" font-weight="600">9:41</text>
+  <!-- Signal, WiFi, Battery icons (right side) -->
+  <!-- Signal bars -->
+  <rect x="556" y="20" width="3" height="10" rx="1" fill="#f1f1f1"/>
+  <rect x="562" y="17" width="3" height="13" rx="1" fill="#f1f1f1"/>
+  <rect x="568" y="14" width="3" height="16" rx="1" fill="#f1f1f1"/>
+  <rect x="574" y="11" width="3" height="19" rx="1" fill="#f1f1f1"/>
+  <!-- WiFi -->
+  <path d="M588 24 Q592 20 596 24" stroke="#f1f1f1" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <path d="M584 20 Q592 14 600 20" stroke="#f1f1f1" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <circle cx="592" cy="27" r="2" fill="#f1f1f1"/>
+  <!-- Battery -->
+  <rect x="608" y="16" width="24" height="14" rx="2" fill="none" stroke="#f1f1f1" stroke-width="1.5"/>
+  <rect x="632" y="20" width="3" height="6" rx="1" fill="#f1f1f1" opacity="0.6"/>
+  <rect x="609.5" y="17.5" width="18" height="11" rx="1.5" fill="#f1f1f1"/>
+
+  <!-- ── SPOTLIGHT SECTION ─────────────────────────── -->
+  <rect x="0" y="44" width="640" height="310" fill="url(#spotBg)"/>
+  <!-- Background art texture -->
+  <ellipse cx="450" cy="180" rx="280" ry="180" fill="#2a2040" opacity="0.4"/>
+  <ellipse cx="500" cy="240" rx="200" ry="120" fill="#3a1a40" opacity="0.25"/>
+  <!-- Overlay gradient -->
+  <rect x="0" y="44" width="640" height="310" fill="url(#spotOverlay)"/>
+
+  <!-- Streambert logo top left (in spotlight area) -->
+  <polygon points="22,58 22,74 36,66" fill="#e50914"/>
+  <text x="44" y="72" fill="#f1f1f1" font-size="16" font-weight="700" letter-spacing="0.5">streambert</text>
+
+  <!-- Search icon top right -->
+  <circle cx="594" cy="66" r="9" fill="none" stroke="#f1f1f1" stroke-width="1.8"/>
+  <line x1="601" y1="73" x2="608" y2="80" stroke="#f1f1f1" stroke-width="1.8" stroke-linecap="round"/>
+  <!-- User avatar -->
+  <circle cx="626" cy="66" r="14" fill="#2a2a2a" stroke="#444" stroke-width="1"/>
+  <text x="626" y="71" fill="#ccc" font-size="11" font-weight="600" text-anchor="middle">JD</text>
+
+  <!-- Spotlight content (bottom portion) -->
+  <!-- Featured badge -->
+  <rect x="24" y="260" width="88" height="20" rx="4" fill="#e50914"/>
+  <text x="68" y="274" fill="#fff" font-size="10" font-weight="700" text-anchor="middle" letter-spacing="1">FEATURED</text>
+
+  <!-- Title -->
+  <text x="24" y="305" fill="#f1f1f1" font-size="30" font-weight="800" letter-spacing="1">POOR THINGS</text>
+
+  <!-- Meta row -->
+  <text x="24" y="326" fill="#888" font-size="13">2023  ·  2h 21m  ·</text>
+  <text x="156" y="326" fill="#f5c518" font-size="13" font-weight="600">7.8 ★</text>
+  <text x="185" y="326" fill="#888" font-size="13">·  R</text>
+
+  <!-- Watch button -->
+  <rect x="24" y="336" width="140" height="40" rx="6" fill="#e50914"/>
+  <text x="94" y="361" fill="#fff" font-size="14" font-weight="700" text-anchor="middle">▶  Watch</text>
+
+  <!-- Info button -->
+  <rect x="174" y="336" width="100" height="40" rx="6" fill="#2a2a2a" stroke="#444" stroke-width="1"/>
+  <text x="224" y="361" fill="#f1f1f1" font-size="13" text-anchor="middle">ⓘ  Info</text>
+
+  <!-- ── SECTION: TRENDING ─────────────────────────── -->
+  <text x="24" y="412" fill="#f1f1f1" font-size="17" font-weight="700">Trending Now</text>
+  <rect x="24" y="416" width="125" height="2.5" rx="1.25" fill="#e50914"/>
+
+  <!-- 2-column grid of poster cards -->
+  <!-- Row 1 -->
+  <!-- Card A (col 1) -->
+  <rect x="24" y="428" width="286" height="290" rx="8" fill="#1a1a1a"/>
+  <rect x="24" y="428" width="286" height="230" rx="8" fill="url(#mp1)"/>
+  <rect x="24" y="648" width="286" height="10" fill="#1a1a1a"/>
+  <!-- Art placeholder -->
+  <rect x="42" y="455" width="200" height="5" rx="2" fill="#3a3a6a" opacity="0.6"/>
+  <rect x="42" y="467" width="140" height="5" rx="2" fill="#3a3a6a" opacity="0.4"/>
+  <rect x="40" y="490" width="248" height="130" rx="6" fill="#1e1e3e" opacity="0.5"/>
+  <!-- Play icon -->
+  <circle cx="167" cy="554" r="24" fill="#000" opacity="0.5"/>
+  <polygon points="159,544 159,564 181,554" fill="#fff" opacity="0.9"/>
+  <text x="165" y="675" fill="#f1f1f1" font-size="13" font-weight="600" text-anchor="middle">Inception</text>
+  <text x="165" y="692" fill="#888" font-size="11" text-anchor="middle">Sci-Fi · 2010 · 8.8 ★</text>
+  <text x="165" y="708" fill="#555" font-size="11" text-anchor="middle">PG-13</text>
+
+  <!-- Card B (col 2) -->
+  <rect x="330" y="428" width="286" height="290" rx="8" fill="#1a1a1a"/>
+  <rect x="330" y="428" width="286" height="230" rx="8" fill="url(#mp2)"/>
+  <rect x="330" y="648" width="286" height="10" fill="#1a1a1a"/>
+  <rect x="348" y="455" width="200" height="5" rx="2" fill="#6a3a3a" opacity="0.6"/>
+  <rect x="348" y="490" width="248" height="130" rx="6" fill="#3e1e1e" opacity="0.5"/>
+  <circle cx="473" cy="554" r="24" fill="#000" opacity="0.5"/>
+  <polygon points="465,544 465,564 487,554" fill="#fff" opacity="0.9"/>
+  <text x="473" y="675" fill="#f1f1f1" font-size="13" font-weight="600" text-anchor="middle">The Batman</text>
+  <text x="473" y="692" fill="#888" font-size="11" text-anchor="middle">Action · 2022 · 7.8 ★</text>
+  <text x="473" y="708" fill="#555" font-size="11" text-anchor="middle">PG-13</text>
+
+  <!-- Row 2 -->
+  <!-- Card C (col 1) -->
+  <rect x="24" y="730" width="286" height="290" rx="8" fill="#1a1a1a"/>
+  <rect x="24" y="730" width="286" height="230" rx="8" fill="url(#mp3)"/>
+  <rect x="24" y="950" width="286" height="10" fill="#1a1a1a"/>
+  <rect x="42" y="757" width="200" height="5" rx="2" fill="#3a5a6a" opacity="0.6"/>
+  <rect x="40" y="792" width="248" height="130" rx="6" fill="#1e2e3e" opacity="0.5"/>
+  <circle cx="167" cy="856" r="24" fill="#000" opacity="0.5"/>
+  <polygon points="159,846 159,866 181,856" fill="#fff" opacity="0.9"/>
+  <text x="165" y="977" fill="#f1f1f1" font-size="13" font-weight="600" text-anchor="middle">Dune: Part Two</text>
+  <text x="165" y="994" fill="#888" font-size="11" text-anchor="middle">Sci-Fi · 2024 · 8.4 ★</text>
+  <text x="165" y="1010" fill="#555" font-size="11" text-anchor="middle">PG-13</text>
+
+  <!-- Card D (col 2) -->
+  <rect x="330" y="730" width="286" height="290" rx="8" fill="#1a1a1a"/>
+  <rect x="330" y="730" width="286" height="230" rx="8" fill="url(#mp4)"/>
+  <rect x="330" y="950" width="286" height="10" fill="#1a1a1a"/>
+  <rect x="348" y="757" width="200" height="5" rx="2" fill="#5a5a3a" opacity="0.6"/>
+  <rect x="346" y="792" width="248" height="130" rx="6" fill="#2e2e1e" opacity="0.5"/>
+  <circle cx="473" cy="856" r="24" fill="#000" opacity="0.5"/>
+  <polygon points="465,846 465,866 487,856" fill="#fff" opacity="0.9"/>
+  <text x="473" y="977" fill="#f1f1f1" font-size="13" font-weight="600" text-anchor="middle">Oppenheimer</text>
+  <text x="473" y="994" fill="#888" font-size="11" text-anchor="middle">Drama · 2023 · 8.3 ★</text>
+  <text x="473" y="1010" fill="#555" font-size="11" text-anchor="middle">R</text>
+
+  <!-- ── SECTION: SERIES ───────────────────────────── -->
+  <text x="24" y="1046" fill="#f1f1f1" font-size="17" font-weight="700">Popular Series</text>
+  <rect x="24" y="1050" width="138" height="2.5" rx="1.25" fill="#e50914"/>
+
+  <!-- 2 partial cards row -->
+  <!-- Card E (col 1) -->
+  <rect x="24" y="1060" width="286" height="70" rx="8" fill="#1a1a1a"/>
+  <rect x="24" y="1060" width="286" height="70" rx="8" fill="url(#mp5)" opacity="0.9"/>
+  <text x="165" y="1090" fill="#f1f1f1" font-size="13" font-weight="600" text-anchor="middle">The Last of Us</text>
+  <text x="165" y="1106" fill="#888" font-size="11" text-anchor="middle">Drama · 2023 · 8.8 ★</text>
+
+  <!-- Card F (col 2) -->
+  <rect x="330" y="1060" width="286" height="70" rx="8" fill="#1a1a1a"/>
+  <rect x="330" y="1060" width="286" height="70" rx="8" fill="url(#mp6)" opacity="0.9"/>
+  <text x="473" y="1090" fill="#f1f1f1" font-size="13" font-weight="600" text-anchor="middle">Severance</text>
+  <text x="473" y="1106" fill="#888" font-size="11" text-anchor="middle">Thriller · 2022 · 8.7 ★</text>
+
+  <!-- ── BOTTOM NAVIGATION BAR ──────────────────────── -->
+  <!-- Bar background -->
+  <rect x="0" y="1074" width="640" height="64" fill="#111111" stroke="#222222" stroke-width="0"/>
+  <rect x="0" y="1074" width="640" height="1" fill="#222222"/>
+
+  <!-- Home tab (active) -->
+  <g>
+    <!-- Home icon -->
+    <polygon points="80,1086 91,1096 91,1108 69,1108 69,1096" fill="none" stroke="#e50914" stroke-width="1.5" stroke-linejoin="round"/>
+    <polygon points="80,1086 92,1097 68,1097" fill="#e50914"/>
+    <rect x="74" y="1099" width="12" height="9" rx="1" fill="#e50914"/>
+    <text x="80" y="1125" fill="#e50914" font-size="11" font-weight="600" text-anchor="middle">Home</text>
+  </g>
+
+  <!-- Search tab -->
+  <g>
+    <circle cx="240" cy="1096" r="9" fill="none" stroke="#555" stroke-width="1.8"/>
+    <line x1="247" y1="1103" x2="254" y2="1110" stroke="#555" stroke-width="1.8" stroke-linecap="round"/>
+    <text x="240" y="1125" fill="#555" font-size="11" text-anchor="middle">Search</text>
+  </g>
+
+  <!-- Library tab -->
+  <g>
+    <rect x="388" y="1085" width="4" height="20" rx="1" fill="#555"/>
+    <rect x="396" y="1082" width="4" height="23" rx="1" fill="#555"/>
+    <rect x="404" y="1088" width="8" height="17" rx="1" fill="#555"/>
+    <text x="400" y="1125" fill="#555" font-size="11" text-anchor="middle">Library</text>
+  </g>
+
+  <!-- Settings tab -->
+  <g>
+    <circle cx="560" cy="1096" r="5.5" fill="none" stroke="#555" stroke-width="1.8"/>
+    <path d="M560 1082 L560 1085 M560 1107 L560 1110 M545 1096 L548 1096 M572 1096 L575 1096 M549 1086 L551.5 1088.5 M568.5 1103.5 L571 1106 M549 1106 L551.5 1103.5 M568.5 1088.5 L571 1086" stroke="#555" stroke-width="1.8" stroke-linecap="round"/>
+    <text x="560" y="1125" fill="#555" font-size="11" text-anchor="middle">Settings</text>
+  </g>
+
+  <!-- Home tab active indicator line -->
+  <rect x="48" y="1074" width="64" height="2" rx="1" fill="#e50914"/>
+</svg>

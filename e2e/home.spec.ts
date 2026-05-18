@@ -1,5 +1,11 @@
 import { test, expect } from '@playwright/test'
-import { seedApiKey, mockTmdbTrending, mockMovieDetails } from './helpers'
+import {
+  seedApiKey,
+  mockTmdbTrending,
+  mockTmdbTrendingWithAuth,
+  mockMovieDetails,
+  assertLitAttributeDelivered,
+} from './helpers'
 
 test.describe('Home Page', () => {
   test('shows trending content after API key is set', async ({ page }) => {
@@ -7,10 +13,8 @@ test.describe('Home Page', () => {
     await mockTmdbTrending(page)
     await page.goto('/')
 
-    // Wait for the spotlight section to appear (trending data loaded)
     await expect(page.locator('.spotlight-section')).toBeVisible({ timeout: 10000 })
 
-    // Confirm at least one media-card is in the DOM
     const mediaCards = page.locator('media-card')
     await expect(mediaCards.first()).toBeVisible({ timeout: 10000 })
     const count = await mediaCards.count()
@@ -22,10 +26,8 @@ test.describe('Home Page', () => {
     await mockTmdbTrending(page)
     await page.goto('/')
 
-    // Wait for the spotlight title to contain the first test movie name
     await expect(page.locator('.spotlight-title')).toContainText('Test Movie 1', { timeout: 10000 })
 
-    // Confirm spotlight actions area has at least one button
     const actionsArea = page.locator('.spotlight-actions')
     await expect(actionsArea).toBeVisible()
     const buttons = actionsArea.locator('button')
@@ -39,35 +41,27 @@ test.describe('Home Page', () => {
     await mockMovieDetails(page, 1000)
     await page.goto('/')
 
-    // Wait for media cards to appear
     await page.locator('media-card').first().waitFor({ state: 'visible', timeout: 10000 })
-
-    // Click the first media-card
     await page.locator('media-card').first().click()
 
-    // The URL should contain movie/1000
     await expect(page).toHaveURL(/#\/movie\/1000/, { timeout: 5000 })
   })
 
   test('shows offline banner when network unavailable', async ({ page }) => {
     await seedApiKey(page)
 
-    // Clear the trending cache so fresh fetch is attempted
     await page.addInitScript(() => {
       localStorage.removeItem('streambert_trendingCache')
       localStorage.removeItem('streambert_trendingCacheDate')
     })
 
-    // Set offline before navigating
     await page.context().setOffline(true)
     await page.goto('/')
 
-    // Look for the offline banner text
     await expect(
       page.locator('.offline-banner, [role="alert"]').filter({ hasText: /offline|internet/i })
     ).toBeVisible({ timeout: 10000 })
 
-    // Restore connection
     await page.context().setOffline(false)
   })
 
@@ -75,7 +69,6 @@ test.describe('Home Page', () => {
     await seedApiKey(page)
     await mockTmdbTrending(page)
 
-    // Seed home layout with continue row hidden
     await page.addInitScript(() => {
       const layout = [
         { id: 'continue',  label: 'Continue Watching', visible: false },
@@ -88,12 +81,88 @@ test.describe('Home Page', () => {
     })
 
     await page.goto('/')
-
-    // Wait for trending content to load
     await expect(page.locator('.spotlight-section')).toBeVisible({ timeout: 10000 })
 
-    // Continue watching section should not be shown
     const continueSection = page.locator('.section-title').filter({ hasText: 'Continue Watching' })
     await expect(continueSection).toHaveCount(0)
+  })
+
+  /**
+   * Full setup flow test — does NOT use seedApiKey().
+   *
+   * This exercises the complete chain that the old tests bypassed:
+   *   setup-screen → user enters key → submit → setup-complete event fires
+   *   → HomePage.onSetupComplete extracts detail.apiKey → saveSettings()
+   *   → loadTrending() uses the key → TMDB request carries Bearer token
+   *
+   * If useSettings loses singleton behaviour, or onSetupComplete stops
+   * extracting detail.apiKey, this test fails because the auth-checking
+   * mock route throws and the content never loads.
+   */
+  test('full setup flow: entering API key leads to authenticated TMDB requests and content', async ({ page }) => {
+    const TEST_KEY = 'fake-tmdb-key-for-testing'
+
+    // Require all trending requests to carry the correct Authorization header
+    await mockTmdbTrendingWithAuth(page, TEST_KEY)
+
+    // Also mock the TMDB configuration validation the setup screen fires
+    await page.route('**/api.themoviedb.org/3/configuration**', async (route) => {
+      const auth = route.request().headers()['authorization'] ?? ''
+      if (!auth.includes(TEST_KEY)) {
+        await route.fulfill({ status: 401, contentType: 'application/json', body: JSON.stringify({ status_code: 7 }) })
+        return
+      }
+      await route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify({ images: { base_url: 'https://image.tmdb.org/t/p/', secure_base_url: 'https://image.tmdb.org/t/p/' } }),
+      })
+    })
+
+    // Navigate without any seeded key — setup screen must appear
+    await page.goto('/')
+    const setupScreen = page.locator('setup-screen')
+    await expect(setupScreen).toBeVisible({ timeout: 5000 })
+
+    // Type the key into the shadow DOM input
+    await page.evaluate((key) => {
+      const el = document.querySelector('setup-screen')
+      const input = el?.shadowRoot?.querySelector('input') as HTMLInputElement | null
+      if (input) {
+        input.value = key
+        input.dispatchEvent(new Event('input', { bubbles: true }))
+      }
+    }, TEST_KEY)
+
+    // Submit
+    await page.evaluate(() => {
+      const el = document.querySelector('setup-screen')
+      const btn = el?.shadowRoot?.querySelector('.btn-primary') as HTMLButtonElement | null
+      btn?.click()
+    })
+
+    // Setup screen should disappear
+    await expect(setupScreen).toBeHidden({ timeout: 8000 })
+
+    // Content should load — verifies the full chain worked
+    await expect(page.locator('.spotlight-section')).toBeVisible({ timeout: 10000 })
+  })
+
+  /**
+   * Verifies that Vue correctly delivers the API key to search-modal via the
+   * 'api-key' attribute (kebab-case). This catches the attribute name mismatch
+   * where Lit's default is 'apikey' (lowercased camelCase) but Vue sets 'api-key'.
+   */
+  test('search-modal receives api-key attribute from Vue', async ({ page }) => {
+    const TEST_KEY = 'fake-tmdb-key-for-testing'
+    await seedApiKey(page, TEST_KEY)
+    await mockTmdbTrending(page)
+    await page.goto('/')
+
+    // Wait for the app to mount and pass props
+    await page.waitForLoadState('networkidle')
+
+    // The search-modal element must have api-key attribute set to the stored key
+    await assertLitAttributeDelivered(page, 'search-modal', 'api-key', TEST_KEY)
   })
 })

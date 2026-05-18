@@ -1,217 +1,284 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" font-family="system-ui, -apple-system, sans-serif">
+  <defs>
+    <linearGradient id="bannerGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0a0a0a" stop-opacity="1"/>
+      <stop offset="45%" stop-color="#0a0a0a" stop-opacity="0.82"/>
+      <stop offset="100%" stop-color="#0a0a0a" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="bannerBg" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#1c1c2e"/>
+      <stop offset="100%" stop-color="#2a2a40"/>
+    </linearGradient>
+    <linearGradient id="bannerFadeBottom" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0a0a0a" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#0a0a0a" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="navGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0a0a0a" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#0a0a0a" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="pg1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2a2a4a"/>
+      <stop offset="100%" stop-color="#111122"/>
+    </linearGradient>
+    <linearGradient id="pg2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3a2020"/>
+      <stop offset="100%" stop-color="#1a1010"/>
+    </linearGradient>
+    <linearGradient id="pg3" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a3020"/>
+      <stop offset="100%" stop-color="#0f1a12"/>
+    </linearGradient>
+    <linearGradient id="pg4" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2a2818"/>
+      <stop offset="100%" stop-color="#141208"/>
+    </linearGradient>
+    <linearGradient id="pg5" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1e2a3a"/>
+      <stop offset="100%" stop-color="#0f141e"/>
+    </linearGradient>
+    <linearGradient id="pg6" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2e1a2e"/>
+      <stop offset="100%" stop-color="#160d16"/>
+    </linearGradient>
+    <linearGradient id="sg1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a2a3a"/>
+      <stop offset="100%" stop-color="#0f141e"/>
+    </linearGradient>
+    <linearGradient id="sg2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3a2010"/>
+      <stop offset="100%" stop-color="#1a0f08"/>
+    </linearGradient>
+    <linearGradient id="sg3" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#102a20"/>
+      <stop offset="100%" stop-color="#081510"/>
+    </linearGradient>
+    <linearGradient id="sg4" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2a1a2a"/>
+      <stop offset="100%" stop-color="#150d15"/>
+    </linearGradient>
+    <linearGradient id="sg5" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a2820"/>
+      <stop offset="100%" stop-color="#0d1410"/>
+    </linearGradient>
+    <linearGradient id="sg6" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#282010"/>
+      <stop offset="100%" stop-color="#141008"/>
+    </linearGradient>
+    <clipPath id="bannerClip">
+      <rect x="68" y="0" width="1212" height="340"/>
+    </clipPath>
+  </defs>
 
   <!-- Background -->
   <rect width="1280" height="720" fill="#0a0a0a"/>
 
-  <!-- Sidebar -->
+  <!-- ── SIDEBAR ────────────────────────────────── -->
   <rect x="0" y="0" width="68" height="720" fill="#111111"/>
+  <!-- Logo triangle -->
+  <polygon points="20,16 20,44 46,30" fill="#e50914"/>
+  <!-- Divider -->
+  <rect x="10" y="60" width="48" height="1" fill="#222"/>
 
-  <!-- Sidebar logo: red play triangle -->
-  <polygon points="22,18 22,42 46,30" fill="#e50914"/>
+  <!-- Home icon (active) -->
+  <rect x="14" y="78" width="40" height="40" rx="8" fill="#e50914" opacity="0.15"/>
+  <polygon points="34,84 44,93 44,106 24,106 24,93" fill="none" stroke="#e50914" stroke-width="1.5" stroke-linejoin="round"/>
+  <polygon points="34,84 46,95 22,95" fill="#e50914"/>
+  <rect x="28" y="96" width="12" height="10" rx="1" fill="#e50914"/>
 
-  <!-- Sidebar icon: Home (active) -->
-  <rect x="14" y="68" width="40" height="40" rx="8" fill="#e50914" opacity="0.15"/>
-  <!-- Home icon -->
-  <polygon points="34,74 50,86 50,106 18,106 18,86" fill="none" stroke="#e50914" stroke-width="2"/>
-  <rect x="28" y="94" width="12" height="12" fill="#e50914" rx="1"/>
+  <!-- Search icon -->
+  <circle cx="34" cy="155" r="7" fill="none" stroke="#555" stroke-width="1.8"/>
+  <line x1="39" y1="160" x2="45" y2="166" stroke="#555" stroke-width="1.8" stroke-linecap="round"/>
 
-  <!-- Sidebar icon: Search -->
-  <rect x="14" y="124" width="40" height="40" rx="8" fill="none"/>
-  <circle cx="34" cy="140" r="8" fill="none" stroke="#888888" stroke-width="2"/>
-  <line x1="40" y1="146" x2="48" y2="154" stroke="#888888" stroke-width="2" stroke-linecap="round"/>
+  <!-- Library icon -->
+  <rect x="22" y="210" width="4" height="18" rx="1" fill="#555"/>
+  <rect x="30" y="207" width="4" height="21" rx="1" fill="#555"/>
+  <rect x="38" y="212" width="8" height="16" rx="1" fill="#555"/>
 
-  <!-- Sidebar icon: Library -->
-  <rect x="14" y="180" width="40" height="40" rx="8" fill="none"/>
-  <rect x="21" y="187" width="4" height="26" fill="#888888" rx="1"/>
-  <rect x="28" y="190" width="4" height="23" fill="#888888" rx="1"/>
-  <rect x="35" y="185" width="4" height="28" fill="#888888" rx="1"/>
-  <rect x="42" y="192" width="4" height="21" fill="#888888" rx="1"/>
+  <!-- Settings icon -->
+  <circle cx="34" cy="295" r="5.5" fill="none" stroke="#555" stroke-width="1.8"/>
+  <path d="M34 280 L34 283.5 M34 306.5 L34 310 M19 295 L22.5 295 M45.5 295 L49 295 M23.5 284.5 L26 287 M42 303 L44.5 305.5 M23.5 305.5 L26 303 M42 287 L44.5 284.5" stroke="#555" stroke-width="1.8" stroke-linecap="round"/>
 
-  <!-- Sidebar icon: Settings -->
-  <rect x="14" y="236" width="40" height="40" rx="8" fill="none"/>
-  <circle cx="34" cy="256" r="7" fill="none" stroke="#888888" stroke-width="2"/>
-  <circle cx="34" cy="256" r="2.5" fill="#888888"/>
-  <line x1="34" y1="244" x2="34" y2="248" stroke="#888888" stroke-width="2" stroke-linecap="round"/>
-  <line x1="34" y1="264" x2="34" y2="268" stroke="#888888" stroke-width="2" stroke-linecap="round"/>
-  <line x1="22" y1="256" x2="26" y2="256" stroke="#888888" stroke-width="2" stroke-linecap="round"/>
-  <line x1="42" y1="256" x2="46" y2="256" stroke="#888888" stroke-width="2" stroke-linecap="round"/>
+  <!-- Icon labels -->
+  <text x="34" y="124" fill="#e50914" font-size="9" text-anchor="middle" font-weight="600">HOME</text>
+  <text x="34" y="178" fill="#555" font-size="9" text-anchor="middle">SEARCH</text>
+  <text x="34" y="238" fill="#555" font-size="9" text-anchor="middle">LIBRARY</text>
+  <text x="34" y="318" fill="#555" font-size="9" text-anchor="middle">SETTINGS</text>
 
-  <!-- Spotlight Banner -->
-  <rect x="68" y="0" width="1212" height="340" fill="#1a1a1a"/>
+  <!-- ── BANNER ──────────────────────────────────── -->
+  <rect x="68" y="0" width="1212" height="340" fill="url(#bannerBg)" clip-path="url(#bannerClip)"/>
+  <!-- Simulated distant stars -->
+  <g clip-path="url(#bannerClip)" opacity="0.5">
+    <circle cx="850" cy="45" r="1" fill="#fff"/>
+    <circle cx="910" cy="80" r="1.5" fill="#fff"/>
+    <circle cx="980" cy="25" r="1" fill="#fff"/>
+    <circle cx="1040" cy="110" r="1" fill="#fff"/>
+    <circle cx="1090" cy="55" r="2" fill="#fff" opacity="0.6"/>
+    <circle cx="1155" cy="88" r="1" fill="#fff"/>
+    <circle cx="1210" cy="38" r="1.5" fill="#fff"/>
+    <circle cx="870" cy="155" r="1" fill="#fff"/>
+    <circle cx="1245" cy="190" r="1" fill="#fff"/>
+    <circle cx="960" cy="210" r="1.5" fill="#fff" opacity="0.4"/>
+    <circle cx="1120" cy="160" r="1" fill="#fff"/>
+    <circle cx="1270" cy="120" r="1" fill="#fff" opacity="0.3"/>
+    <!-- Subtle planet/nebula blob -->
+    <ellipse cx="1100" cy="170" rx="180" ry="120" fill="#1a2050" opacity="0.4"/>
+    <ellipse cx="1050" cy="200" rx="80" ry="60" fill="#2030a0" opacity="0.15"/>
+  </g>
+  <!-- Gradient overlays -->
+  <rect x="68" y="0" width="1212" height="340" fill="url(#bannerGrad)" clip-path="url(#bannerClip)"/>
+  <rect x="68" y="255" width="1212" height="85" fill="url(#bannerFadeBottom)" clip-path="url(#bannerClip)"/>
 
-  <!-- Backdrop gradient overlay: dark on left, transparent right -->
-  <defs>
-    <linearGradient id="spotlightGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#0a0a0a" stop-opacity="1"/>
-      <stop offset="45%" stop-color="#0a0a0a" stop-opacity="0.85"/>
-      <stop offset="100%" stop-color="#0a0a0a" stop-opacity="0.1"/>
-    </linearGradient>
-    <linearGradient id="backdropImg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#1e2a3a"/>
-      <stop offset="50%" stop-color="#0d1520"/>
-      <stop offset="100%" stop-color="#1a0a0a"/>
-    </linearGradient>
-    <linearGradient id="posterGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#1e2a3a"/>
-      <stop offset="100%" stop-color="#0d1520"/>
-    </linearGradient>
-    <linearGradient id="posterGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#2a1a1a"/>
-      <stop offset="100%" stop-color="#1a0d0d"/>
-    </linearGradient>
-    <linearGradient id="posterGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#1a2a1a"/>
-      <stop offset="100%" stop-color="#0d1a0d"/>
-    </linearGradient>
-    <linearGradient id="posterGrad4" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#2a2a1a"/>
-      <stop offset="100%" stop-color="#1a1a0d"/>
-    </linearGradient>
-    <linearGradient id="posterGrad5" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#1a1a2a"/>
-      <stop offset="100%" stop-color="#0d0d1a"/>
-    </linearGradient>
-    <linearGradient id="posterGrad6" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#2a1a2a"/>
-      <stop offset="100%" stop-color="#1a0d1a"/>
-    </linearGradient>
-  </defs>
+  <!-- Featured badge -->
+  <rect x="96" y="58" width="108" height="22" rx="4" fill="#e50914"/>
+  <text x="150" y="74" fill="#fff" font-size="11" font-weight="700" text-anchor="middle" letter-spacing="1.2">FEATURED</text>
 
-  <!-- Backdrop image simulation -->
-  <rect x="68" y="0" width="1212" height="340" fill="url(#backdropImg)"/>
+  <!-- Banner title -->
+  <text x="96" y="128" fill="#f1f1f1" font-size="46" font-weight="800" letter-spacing="3">INTERSTELLAR</text>
 
-  <!-- Stars scattered in backdrop -->
-  <circle cx="900" cy="40" r="1" fill="#ffffff" opacity="0.6"/>
-  <circle cx="950" cy="80" r="1.5" fill="#ffffff" opacity="0.4"/>
-  <circle cx="1000" cy="30" r="1" fill="#ffffff" opacity="0.5"/>
-  <circle cx="1050" cy="60" r="1" fill="#ffffff" opacity="0.7"/>
-  <circle cx="1100" cy="100" r="1.5" fill="#ffffff" opacity="0.3"/>
-  <circle cx="1150" cy="50" r="1" fill="#ffffff" opacity="0.6"/>
-  <circle cx="1200" cy="90" r="1" fill="#ffffff" opacity="0.4"/>
-  <circle cx="850" cy="120" r="1" fill="#ffffff" opacity="0.5"/>
-  <circle cx="1000" cy="150" r="1.5" fill="#ffffff" opacity="0.3"/>
-  <circle cx="1150" cy="140" r="1" fill="#ffffff" opacity="0.6"/>
-  <circle cx="1250" cy="70" r="1" fill="#ffffff" opacity="0.4"/>
+  <!-- Meta line -->
+  <text x="96" y="156" fill="#888" font-size="14">2014  ·  2h 49m  ·</text>
+  <text x="241" y="156" fill="#f5c518" font-size="14" font-weight="600">8.6 ★</text>
+  <text x="276" y="156" fill="#888" font-size="14">·  PG</text>
 
-  <!-- Planet silhouette in backdrop -->
-  <circle cx="1100" cy="180" r="100" fill="#0d1520" opacity="0.7"/>
-  <ellipse cx="1100" cy="180" rx="150" ry="18" fill="none" stroke="#1e3a5a" stroke-width="2" opacity="0.5"/>
-
-  <!-- Gradient overlay on backdrop -->
-  <rect x="68" y="0" width="1212" height="340" fill="url(#spotlightGrad)"/>
-
-  <!-- Bottom fade for banner -->
-  <defs>
-    <linearGradient id="bannerBottomFade" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#0a0a0a" stop-opacity="0"/>
-      <stop offset="100%" stop-color="#0a0a0a" stop-opacity="1"/>
-    </linearGradient>
-  </defs>
-  <rect x="68" y="240" width="1212" height="100" fill="url(#bannerBottomFade)"/>
-
-  <!-- Spotlight content: left side -->
-  <!-- Rating badge -->
-  <rect x="100" y="80" width="52" height="20" rx="4" fill="#f5c518" opacity="0.15"/>
-  <text x="108" y="94" font-size="11" fill="#f5c518" font-weight="600">IMDb</text>
-
-  <!-- Title -->
-  <text x="100" y="155" font-size="42" font-weight="800" fill="#f1f1f1" letter-spacing="3">INTERSTELLAR</text>
-
-  <!-- Meta row -->
-  <text x="100" y="182" font-size="14" fill="#888888">2014</text>
-  <text x="136" y="182" font-size="14" fill="#555555">·</text>
-  <text x="148" y="182" font-size="14" fill="#888888">2h 49m</text>
-  <text x="210" y="182" font-size="14" fill="#555555">·</text>
-  <text x="222" y="182" font-size="14" fill="#f5c518">8.6 ★</text>
-  <text x="270" y="182" font-size="14" fill="#555555">·</text>
-  <text x="282" y="182" font-size="14" fill="#888888">PG</text>
+  <!-- Genre pills -->
+  <rect x="96" y="166" width="56" height="20" rx="10" fill="#1a1a1a" stroke="#333" stroke-width="1"/>
+  <text x="124" y="180" fill="#aaa" font-size="11" text-anchor="middle">Sci-Fi</text>
+  <rect x="160" y="166" width="64" height="20" rx="10" fill="#1a1a1a" stroke="#333" stroke-width="1"/>
+  <text x="192" y="180" fill="#aaa" font-size="11" text-anchor="middle">Adventure</text>
+  <rect x="232" y="166" width="58" height="20" rx="10" fill="#1a1a1a" stroke="#333" stroke-width="1"/>
+  <text x="261" y="180" fill="#aaa" font-size="11" text-anchor="middle">Drama</text>
 
   <!-- Overview -->
-  <text x="100" y="208" font-size="14" fill="#cccccc">A team of explorers travel through a wormhole in space in an attempt to ensure humanity's</text>
-  <text x="100" y="228" font-size="14" fill="#cccccc">survival. Directed by Christopher Nolan.</text>
+  <text x="96" y="208" fill="#cccccc" font-size="13.5">A team of explorers travel through a wormhole in space in an attempt to ensure</text>
+  <text x="96" y="226" fill="#cccccc" font-size="13.5">humanity's survival beyond a dying Earth. Directed by Christopher Nolan.</text>
 
-  <!-- Buttons -->
-  <rect x="100" y="252" width="148" height="42" rx="6" fill="#e50914"/>
-  <text x="124" y="278" font-size="15" font-weight="700" fill="#ffffff">▶  Watch Now</text>
+  <!-- CTA Buttons -->
+  <rect x="96" y="244" width="148" height="42" rx="6" fill="#e50914"/>
+  <text x="170" y="270" fill="#fff" font-size="14" font-weight="700" text-anchor="middle">▶  Watch Now</text>
+  <rect x="254" y="244" width="130" height="42" rx="6" fill="#2a2a2a" stroke="#444" stroke-width="1"/>
+  <text x="319" y="270" fill="#f1f1f1" font-size="14" font-weight="500" text-anchor="middle">ⓘ  More Info</text>
 
-  <rect x="260" y="252" width="140" height="42" rx="6" fill="#333333"/>
-  <text x="285" y="278" font-size="15" font-weight="600" fill="#f1f1f1">ⓘ  More Info</text>
+  <!-- ── TOP NAV OVERLAY ─────────────────────────── -->
+  <rect x="68" y="0" width="1212" height="54" fill="url(#navGrad)"/>
+  <!-- Search bar -->
+  <rect x="1038" y="12" width="210" height="32" rx="16" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1"/>
+  <text x="1058" y="33" fill="#555" font-size="13">🔍  Search titles...</text>
+  <!-- Avatar -->
+  <circle cx="1262" cy="28" r="16" fill="#2a2a2a" stroke="#444" stroke-width="1"/>
+  <text x="1262" y="33" fill="#ccc" font-size="13" font-weight="600" text-anchor="middle">JD</text>
 
-  <!-- Section: Trending Movies -->
-  <text x="100" y="370" font-size="18" font-weight="700" fill="#f1f1f1">Trending Movies</text>
-  <rect x="100" y="375" width="140" height="3" rx="1" fill="#e50914"/>
+  <!-- ── TRENDING MOVIES ─────────────────────────── -->
+  <text x="96" y="372" fill="#f1f1f1" font-size="17" font-weight="700">Trending Movies</text>
+  <rect x="96" y="376" width="145" height="3" rx="1.5" fill="#e50914"/>
 
-  <!-- 6 Movie Cards Row 1 -->
+  <!-- 6 poster cards -->
   <!-- Card 1 -->
-  <rect x="100" y="385" width="140" height="210" rx="8" fill="#1a1a1a"/>
-  <rect x="100" y="385" width="140" height="160" rx="8" fill="url(#posterGrad1)"/>
-  <rect x="100" y="533" width="140" height="12" rx="0" fill="#1a1a1a"/>
-  <text x="110" y="549" font-size="12" font-weight="600" fill="#f1f1f1">Oppenheimer</text>
-  <text x="110" y="565" font-size="11" fill="#888888">2023 · Biography</text>
-  <!-- Play overlay -->
-  <circle cx="170" cy="465" r="18" fill="#000000" opacity="0.5"/>
-  <polygon points="164,458 164,472 178,465" fill="#ffffff" opacity="0.9"/>
+  <rect x="96" y="390" width="140" height="210" rx="8" fill="#1a1a1a"/>
+  <rect x="96" y="390" width="140" height="155" rx="8" fill="url(#pg1)"/>
+  <rect x="96" y="535" width="140" height="12" fill="#1a1a1a"/>
+  <!-- Poster detail lines -->
+  <rect x="110" y="420" width="80" height="3" rx="1" fill="#3a3a6a" opacity="0.7"/>
+  <rect x="110" y="432" width="55" height="3" rx="1" fill="#3a3a6a" opacity="0.5"/>
+  <rect x="108" y="450" width="110" height="70" rx="4" fill="#1e1e3e" opacity="0.6"/>
+  <text x="166" y="555" fill="#f1f1f1" font-size="12" font-weight="600" text-anchor="middle">Inception</text>
+  <text x="166" y="570" fill="#888" font-size="10" text-anchor="middle">2010 · 8.8 ★</text>
+  <text x="166" y="585" fill="#555" font-size="10" text-anchor="middle">Sci-Fi · Thriller</text>
 
   <!-- Card 2 -->
-  <rect x="252" y="385" width="140" height="210" rx="8" fill="#1a1a1a"/>
-  <rect x="252" y="385" width="140" height="160" rx="8" fill="url(#posterGrad2)"/>
-  <rect x="252" y="533" width="140" height="12" rx="0" fill="#1a1a1a"/>
-  <text x="262" y="549" font-size="12" font-weight="600" fill="#f1f1f1">The Batman</text>
-  <text x="262" y="565" font-size="11" fill="#888888">2022 · Action</text>
-  <circle cx="322" cy="465" r="18" fill="#000000" opacity="0.5"/>
-  <polygon points="316,458 316,472 330,465" fill="#ffffff" opacity="0.9"/>
+  <rect x="248" y="390" width="140" height="210" rx="8" fill="#1a1a1a"/>
+  <rect x="248" y="390" width="140" height="155" rx="8" fill="url(#pg2)"/>
+  <rect x="248" y="535" width="140" height="12" fill="#1a1a1a"/>
+  <rect x="260" y="420" width="80" height="3" rx="1" fill="#6a3a3a" opacity="0.7"/>
+  <rect x="260" y="460" width="110" height="70" rx="4" fill="#3e1e1e" opacity="0.6"/>
+  <text x="318" y="555" fill="#f1f1f1" font-size="12" font-weight="600" text-anchor="middle">The Batman</text>
+  <text x="318" y="570" fill="#888" font-size="10" text-anchor="middle">2022 · 7.8 ★</text>
+  <text x="318" y="585" fill="#555" font-size="10" text-anchor="middle">Action · Crime</text>
 
   <!-- Card 3 -->
-  <rect x="404" y="385" width="140" height="210" rx="8" fill="#1a1a1a"/>
-  <rect x="404" y="385" width="140" height="160" rx="8" fill="url(#posterGrad3)"/>
-  <rect x="404" y="533" width="140" height="12" rx="0" fill="#1a1a1a"/>
-  <text x="414" y="549" font-size="12" font-weight="600" fill="#f1f1f1">Avatar: Way of Water</text>
-  <text x="414" y="565" font-size="11" fill="#888888">2022 · Sci-Fi</text>
-  <circle cx="474" cy="465" r="18" fill="#000000" opacity="0.5"/>
-  <polygon points="468,458 468,472 482,465" fill="#ffffff" opacity="0.9"/>
+  <rect x="400" y="390" width="140" height="210" rx="8" fill="#1a1a1a"/>
+  <rect x="400" y="390" width="140" height="155" rx="8" fill="url(#pg3)"/>
+  <rect x="400" y="535" width="140" height="12" fill="#1a1a1a"/>
+  <rect x="412" y="420" width="80" height="3" rx="1" fill="#3a6a3a" opacity="0.7"/>
+  <rect x="410" y="460" width="110" height="70" rx="4" fill="#1e3e1e" opacity="0.6"/>
+  <text x="470" y="555" fill="#f1f1f1" font-size="12" font-weight="600" text-anchor="middle">Oppenheimer</text>
+  <text x="470" y="570" fill="#888" font-size="10" text-anchor="middle">2023 · 8.3 ★</text>
+  <text x="470" y="585" fill="#555" font-size="10" text-anchor="middle">Drama · History</text>
 
   <!-- Card 4 -->
-  <rect x="556" y="385" width="140" height="210" rx="8" fill="#1a1a1a"/>
-  <rect x="556" y="385" width="140" height="160" rx="8" fill="url(#posterGrad4)"/>
-  <rect x="556" y="533" width="140" height="12" rx="0" fill="#1a1a1a"/>
-  <text x="566" y="549" font-size="12" font-weight="600" fill="#f1f1f1">Dune: Part Two</text>
-  <text x="566" y="565" font-size="11" fill="#888888">2024 · Sci-Fi</text>
-  <circle cx="626" cy="465" r="18" fill="#000000" opacity="0.5"/>
-  <polygon points="620,458 620,472 634,465" fill="#ffffff" opacity="0.9"/>
+  <rect x="552" y="390" width="140" height="210" rx="8" fill="#1a1a1a"/>
+  <rect x="552" y="390" width="140" height="155" rx="8" fill="url(#pg4)"/>
+  <rect x="552" y="535" width="140" height="12" fill="#1a1a1a"/>
+  <rect x="564" y="420" width="80" height="3" rx="1" fill="#6a6a3a" opacity="0.7"/>
+  <rect x="562" y="460" width="110" height="70" rx="4" fill="#3e3e1e" opacity="0.6"/>
+  <text x="622" y="555" fill="#f1f1f1" font-size="12" font-weight="600" text-anchor="middle">Dune: Part Two</text>
+  <text x="622" y="570" fill="#888" font-size="10" text-anchor="middle">2024 · 8.4 ★</text>
+  <text x="622" y="585" fill="#555" font-size="10" text-anchor="middle">Sci-Fi · Epic</text>
 
   <!-- Card 5 -->
-  <rect x="708" y="385" width="140" height="210" rx="8" fill="#1a1a1a"/>
-  <rect x="708" y="385" width="140" height="160" rx="8" fill="url(#posterGrad5)"/>
-  <rect x="708" y="533" width="140" height="12" rx="0" fill="#1a1a1a"/>
-  <text x="718" y="549" font-size="12" font-weight="600" fill="#f1f1f1">Poor Things</text>
-  <text x="718" y="565" font-size="11" fill="#888888">2023 · Drama</text>
-  <circle cx="778" cy="465" r="18" fill="#000000" opacity="0.5"/>
-  <polygon points="772,458 772,472 786,465" fill="#ffffff" opacity="0.9"/>
+  <rect x="704" y="390" width="140" height="210" rx="8" fill="#1a1a1a"/>
+  <rect x="704" y="390" width="140" height="155" rx="8" fill="url(#pg5)"/>
+  <rect x="704" y="535" width="140" height="12" fill="#1a1a1a"/>
+  <rect x="716" y="420" width="80" height="3" rx="1" fill="#3a4a6a" opacity="0.7"/>
+  <rect x="714" y="460" width="110" height="70" rx="4" fill="#1e2a3e" opacity="0.6"/>
+  <text x="774" y="555" fill="#f1f1f1" font-size="12" font-weight="600" text-anchor="middle">Poor Things</text>
+  <text x="774" y="570" fill="#888" font-size="10" text-anchor="middle">2023 · 7.8 ★</text>
+  <text x="774" y="585" fill="#555" font-size="10" text-anchor="middle">Comedy · Drama</text>
 
   <!-- Card 6 -->
-  <rect x="860" y="385" width="140" height="210" rx="8" fill="#1a1a1a"/>
-  <rect x="860" y="385" width="140" height="160" rx="8" fill="url(#posterGrad6)"/>
-  <rect x="860" y="533" width="140" height="12" rx="0" fill="#1a1a1a"/>
-  <text x="870" y="549" font-size="12" font-weight="600" fill="#f1f1f1">Past Lives</text>
-  <text x="870" y="565" font-size="11" fill="#888888">2023 · Romance</text>
-  <circle cx="930" cy="465" r="18" fill="#000000" opacity="0.5"/>
-  <polygon points="924,458 924,472 938,465" fill="#ffffff" opacity="0.9"/>
+  <rect x="856" y="390" width="140" height="210" rx="8" fill="#1a1a1a"/>
+  <rect x="856" y="390" width="140" height="155" rx="8" fill="url(#pg6)"/>
+  <rect x="856" y="535" width="140" height="12" fill="#1a1a1a"/>
+  <rect x="868" y="420" width="80" height="3" rx="1" fill="#6a3a6a" opacity="0.7"/>
+  <rect x="866" y="460" width="110" height="70" rx="4" fill="#3e1e3e" opacity="0.6"/>
+  <text x="926" y="555" fill="#f1f1f1" font-size="12" font-weight="600" text-anchor="middle">Killers of the...</text>
+  <text x="926" y="570" fill="#888" font-size="10" text-anchor="middle">2023 · 7.6 ★</text>
+  <text x="926" y="585" fill="#555" font-size="10" text-anchor="middle">Western · Crime</text>
 
-  <!-- Fade-right edge for cards row -->
-  <defs>
-    <linearGradient id="fadeRight" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#0a0a0a" stop-opacity="0"/>
-      <stop offset="100%" stop-color="#0a0a0a" stop-opacity="1"/>
-    </linearGradient>
-  </defs>
-  <rect x="960" y="385" width="320" height="210" fill="url(#fadeRight)"/>
+  <!-- ── TRENDING SERIES ─────────────────────────── -->
+  <text x="96" y="622" fill="#f1f1f1" font-size="17" font-weight="700">Trending Series</text>
+  <rect x="96" y="626" width="138" height="3" rx="1.5" fill="#e50914"/>
 
-  <!-- Section: Trending Series -->
-  <text x="100" y="622" font-size="18" font-weight="700" fill="#f1f1f1">Trending Series</text>
-  <rect x="100" y="627" width="130" height="3" rx="1" fill="#e50914"/>
+  <!-- 6 series cards (partial, cut by viewport) -->
+  <!-- S-Card 1 -->
+  <rect x="96" y="640" width="140" height="74" rx="8" fill="#1a1a1a"/>
+  <rect x="96" y="640" width="140" height="74" rx="8" fill="url(#sg1)" opacity="0.9"/>
+  <text x="166" y="673" fill="#f1f1f1" font-size="12" font-weight="600" text-anchor="middle">The Last of Us</text>
+  <text x="166" y="688" fill="#888" font-size="10" text-anchor="middle">2023 · TV-MA · 8.8 ★</text>
+  <text x="166" y="703" fill="#555" font-size="10" text-anchor="middle">Drama</text>
 
-  <!-- Sidebar bottom user avatar -->
-  <circle cx="34" cy="695" r="16" fill="#333333"/>
-  <text x="34" y="700" font-size="12" fill="#888888" text-anchor="middle">U</text>
+  <!-- S-Card 2 -->
+  <rect x="248" y="640" width="140" height="74" rx="8" fill="#1a1a1a"/>
+  <rect x="248" y="640" width="140" height="74" rx="8" fill="url(#sg2)" opacity="0.9"/>
+  <text x="318" y="673" fill="#f1f1f1" font-size="12" font-weight="600" text-anchor="middle">Breaking Bad</text>
+  <text x="318" y="688" fill="#888" font-size="10" text-anchor="middle">2008 · TV-MA · 9.5 ★</text>
+  <text x="318" y="703" fill="#555" font-size="10" text-anchor="middle">Crime · Thriller</text>
 
+  <!-- S-Card 3 -->
+  <rect x="400" y="640" width="140" height="74" rx="8" fill="#1a1a1a"/>
+  <rect x="400" y="640" width="140" height="74" rx="8" fill="url(#sg3)" opacity="0.9"/>
+  <text x="470" y="673" fill="#f1f1f1" font-size="12" font-weight="600" text-anchor="middle">Shogun</text>
+  <text x="470" y="688" fill="#888" font-size="10" text-anchor="middle">2024 · TV-MA · 8.7 ★</text>
+  <text x="470" y="703" fill="#555" font-size="10" text-anchor="middle">Historical Drama</text>
+
+  <!-- S-Card 4 -->
+  <rect x="552" y="640" width="140" height="74" rx="8" fill="#1a1a1a"/>
+  <rect x="552" y="640" width="140" height="74" rx="8" fill="url(#sg4)" opacity="0.9"/>
+  <text x="622" y="673" fill="#f1f1f1" font-size="12" font-weight="600" text-anchor="middle">Severance</text>
+  <text x="622" y="688" fill="#888" font-size="10" text-anchor="middle">2022 · TV-MA · 8.7 ★</text>
+  <text x="622" y="703" fill="#555" font-size="10" text-anchor="middle">Thriller · Sci-Fi</text>
+
+  <!-- S-Card 5 -->
+  <rect x="704" y="640" width="140" height="74" rx="8" fill="#1a1a1a"/>
+  <rect x="704" y="640" width="140" height="74" rx="8" fill="url(#sg5)" opacity="0.9"/>
+  <text x="774" y="673" fill="#f1f1f1" font-size="12" font-weight="600" text-anchor="middle">House of the Dragon</text>
+  <text x="774" y="688" fill="#888" font-size="10" text-anchor="middle">2022 · TV-MA · 8.5 ★</text>
+  <text x="774" y="703" fill="#555" font-size="10" text-anchor="middle">Fantasy · Drama</text>
+
+  <!-- S-Card 6 -->
+  <rect x="856" y="640" width="140" height="74" rx="8" fill="#1a1a1a"/>
+  <rect x="856" y="640" width="140" height="74" rx="8" fill="url(#sg6)" opacity="0.9"/>
+  <text x="926" y="673" fill="#f1f1f1" font-size="12" font-weight="600" text-anchor="middle">Fallout</text>
+  <text x="926" y="688" fill="#888" font-size="10" text-anchor="middle">2024 · TV-MA · 8.5 ★</text>
+  <text x="926" y="703" fill="#555" font-size="10" text-anchor="middle">Sci-Fi · Action</text>
 </svg>

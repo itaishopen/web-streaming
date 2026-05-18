@@ -1,0 +1,275 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" font-family="system-ui, -apple-system, sans-serif">
+  <defs>
+    <linearGradient id="bannerBg" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#100808"/>
+      <stop offset="100%" stop-color="#200808"/>
+    </linearGradient>
+    <linearGradient id="bannerGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0a0a0a" stop-opacity="1"/>
+      <stop offset="50%" stop-color="#0a0a0a" stop-opacity="0.88"/>
+      <stop offset="100%" stop-color="#0a0a0a" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="bannerFadeBottom" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0a0a0a" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#0a0a0a" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="posterGrad" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#200808"/>
+      <stop offset="100%" stop-color="#401010"/>
+    </linearGradient>
+    <linearGradient id="navGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0a0a0a" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#0a0a0a" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="ep1progress" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#e50914"/>
+      <stop offset="35%" stop-color="#e50914"/>
+      <stop offset="35%" stop-color="#2a2a2a"/>
+      <stop offset="100%" stop-color="#2a2a2a"/>
+    </linearGradient>
+    <clipPath id="bannerClip">
+      <rect x="68" y="0" width="1212" height="280"/>
+    </clipPath>
+    <filter id="posterShadow">
+      <feDropShadow dx="4" dy="8" stdDeviation="12" flood-color="#000" flood-opacity="0.8"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1280" height="720" fill="#0a0a0a"/>
+
+  <!-- ── SIDEBAR ─────────────────────────────────── -->
+  <rect x="0" y="0" width="68" height="720" fill="#111111"/>
+  <polygon points="20,16 20,44 46,30" fill="#e50914"/>
+  <rect x="10" y="60" width="48" height="1" fill="#222"/>
+
+  <!-- Home icon -->
+  <polygon points="34,84 44,93 44,106 24,106 24,93" fill="none" stroke="#555" stroke-width="1.5" stroke-linejoin="round"/>
+  <polygon points="34,84 46,95 22,95" fill="#555"/>
+  <rect x="28" y="96" width="12" height="10" rx="1" fill="#555"/>
+  <!-- Search icon -->
+  <circle cx="34" cy="155" r="7" fill="none" stroke="#555" stroke-width="1.8"/>
+  <line x1="39" y1="160" x2="45" y2="166" stroke="#555" stroke-width="1.8" stroke-linecap="round"/>
+  <!-- Library icon -->
+  <rect x="22" y="210" width="4" height="18" rx="1" fill="#555"/>
+  <rect x="30" y="207" width="4" height="21" rx="1" fill="#555"/>
+  <rect x="38" y="212" width="8" height="16" rx="1" fill="#555"/>
+  <!-- Settings icon -->
+  <circle cx="34" cy="295" r="5.5" fill="none" stroke="#555" stroke-width="1.8"/>
+  <path d="M34 280 L34 283.5 M34 306.5 L34 310 M19 295 L22.5 295 M45.5 295 L49 295 M23.5 284.5 L26 287 M42 303 L44.5 305.5 M23.5 305.5 L26 303 M42 287 L44.5 284.5" stroke="#555" stroke-width="1.8" stroke-linecap="round"/>
+
+  <text x="34" y="124" fill="#555" font-size="9" text-anchor="middle">HOME</text>
+  <text x="34" y="178" fill="#555" font-size="9" text-anchor="middle">SEARCH</text>
+  <text x="34" y="238" fill="#555" font-size="9" text-anchor="middle">LIBRARY</text>
+  <text x="34" y="318" fill="#555" font-size="9" text-anchor="middle">SETTINGS</text>
+
+  <!-- ── BANNER SPOTLIGHT ──────────────────────────── -->
+  <rect x="68" y="0" width="1212" height="280" fill="url(#bannerBg)" clip-path="url(#bannerClip)"/>
+  <!-- Background texture hints: titans, walls -->
+  <g clip-path="url(#bannerClip)" opacity="0.35">
+    <rect x="700" y="0" width="580" height="280" fill="#200000" opacity="0.6"/>
+    <ellipse cx="1050" cy="140" rx="250" ry="160" fill="#600000" opacity="0.2"/>
+    <!-- Wall silhouette -->
+    <rect x="800" y="100" width="18" height="180" fill="#400000" opacity="0.5"/>
+    <rect x="900" y="80" width="20" height="200" fill="#400000" opacity="0.4"/>
+    <rect x="1000" y="110" width="16" height="170" fill="#400000" opacity="0.5"/>
+    <rect x="1100" y="90" width="18" height="190" fill="#400000" opacity="0.4"/>
+  </g>
+  <rect x="68" y="0" width="1212" height="280" fill="url(#bannerGrad)" clip-path="url(#bannerClip)"/>
+  <rect x="68" y="210" width="1212" height="70" fill="url(#bannerFadeBottom)" clip-path="url(#bannerClip)"/>
+
+  <!-- Poster -->
+  <rect x="96" y="30" width="150" height="225" rx="10" fill="url(#posterGrad)" filter="url(#posterShadow)"/>
+  <rect x="104" y="40" width="134" height="90" rx="4" fill="#300808" opacity="0.9"/>
+  <text x="171" y="92" fill="#e50914" font-size="11" font-weight="800" text-anchor="middle" letter-spacing="0.5">ATTACK ON</text>
+  <text x="171" y="108" fill="#e50914" font-size="11" font-weight="800" text-anchor="middle" letter-spacing="0.5">TITAN</text>
+  <rect x="104" y="138" width="134" height="2" fill="#e50914" opacity="0.4"/>
+  <rect x="104" y="148" width="134" height="98" rx="4" fill="#200000" opacity="0.8"/>
+  <!-- Titan silhouette suggestion -->
+  <ellipse cx="171" cy="185" rx="30" ry="40" fill="#400000" opacity="0.6"/>
+  <rect x="155" y="195" width="32" height="50" rx="4" fill="#350000" opacity="0.5"/>
+
+  <!-- Text content (right of poster) -->
+  <text x="268" y="68" fill="#f1f1f1" font-size="34" font-weight="800" letter-spacing="2">ATTACK ON TITAN</text>
+
+  <!-- Genre pills -->
+  <rect x="268" y="80" width="52" height="22" rx="11" fill="#2a0808" stroke="#4a1010" stroke-width="1"/>
+  <text x="294" y="95" fill="#e87070" font-size="11" text-anchor="middle">Anime</text>
+  <rect x="328" y="80" width="56" height="22" rx="11" fill="#2a2a2a" stroke="#444" stroke-width="1"/>
+  <text x="356" y="95" fill="#bbb" font-size="11" text-anchor="middle">Action</text>
+  <rect x="392" y="80" width="58" height="22" rx="11" fill="#2a2a2a" stroke="#444" stroke-width="1"/>
+  <text x="421" y="95" fill="#bbb" font-size="11" text-anchor="middle">Fantasy</text>
+
+  <!-- Meta -->
+  <text x="268" y="126" fill="#888" font-size="13">2013  ·  4 Seasons  ·  87 Episodes  ·</text>
+  <text x="477" y="126" fill="#f5c518" font-size="13" font-weight="600">9.0 ★</text>
+  <text x="510" y="126" fill="#888" font-size="13">·  TV-MA</text>
+
+  <!-- Overview -->
+  <text x="268" y="154" fill="#ccc" font-size="13">Humanity lives inside cities surrounded by enormous walls as protection against</text>
+  <text x="268" y="172" fill="#ccc" font-size="13">Titans, gigantic humanoid beings who devour humans seemingly without reason.</text>
+
+  <!-- Buttons -->
+  <rect x="268" y="192" width="120" height="40" rx="6" fill="#2a2a2a" stroke="#444" stroke-width="1"/>
+  <text x="328" y="217" fill="#f1f1f1" font-size="13" font-weight="500" text-anchor="middle">+ Save</text>
+
+  <rect x="398" y="192" width="118" height="40" rx="6" fill="#2a2a2a" stroke="#444" stroke-width="1"/>
+  <text x="457" y="217" fill="#f1f1f1" font-size="13" font-weight="500" text-anchor="middle">🎬  Trailer</text>
+
+  <!-- Ratings badge -->
+  <rect x="268" y="242" width="82" height="24" rx="4" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1"/>
+  <text x="309" y="258" fill="#f5c518" font-size="12" text-anchor="middle" font-weight="600">MAL: 9.0 / 10</text>
+
+  <!-- ── TOP NAV OVERLAY ─────────────────────────── -->
+  <rect x="68" y="0" width="1212" height="54" fill="url(#navGrad)"/>
+  <rect x="1038" y="12" width="210" height="32" rx="16" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1"/>
+  <text x="1058" y="33" fill="#555" font-size="13">🔍  Search titles...</text>
+  <circle cx="1262" cy="28" r="16" fill="#2a2a2a" stroke="#444" stroke-width="1"/>
+  <text x="1262" y="33" fill="#ccc" font-size="13" font-weight="600" text-anchor="middle">JD</text>
+
+  <!-- ── SEASON TABS ─────────────────────────────── -->
+  <rect x="68" y="282" width="1212" height="52" fill="#111111"/>
+  <!-- Season 1 (active) -->
+  <rect x="88" y="294" width="90" height="30" rx="15" fill="#e50914"/>
+  <text x="133" y="314" fill="#fff" font-size="13" font-weight="600" text-anchor="middle">Season 1</text>
+  <!-- Season 2 -->
+  <rect x="186" y="294" width="90" height="30" rx="15" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1"/>
+  <text x="231" y="314" fill="#888" font-size="13" text-anchor="middle">Season 2</text>
+  <!-- Season 3 -->
+  <rect x="284" y="294" width="90" height="30" rx="15" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1"/>
+  <text x="329" y="314" fill="#888" font-size="13" text-anchor="middle">Season 3</text>
+  <!-- Season 4 -->
+  <rect x="382" y="294" width="90" height="30" rx="15" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1"/>
+  <text x="427" y="314" fill="#888" font-size="13" text-anchor="middle">Season 4</text>
+
+  <!-- Episode count label -->
+  <text x="1240" y="314" fill="#555" font-size="12" text-anchor="end">25 episodes</text>
+
+  <!-- Separator -->
+  <rect x="68" y="334" width="1212" height="1" fill="#1e1e1e"/>
+
+  <!-- ── EPISODES GRID ───────────────────────────── -->
+  <!-- 4 columns × 2 rows (8 episodes) -->
+  <!-- Col widths: ~275px each, starting at x=88 -->
+
+  <!-- Row 1 -->
+  <!-- Ep 1 card -->
+  <rect x="88" y="346" width="275" height="110" rx="8" fill="#111111" stroke="#1e1e1e" stroke-width="1"/>
+  <!-- Thumbnail left -->
+  <rect x="88" y="346" width="94" height="110" rx="8" fill="#1a1a1a"/>
+  <rect x="96" y="346" width="86" height="110" fill="#1a1a1a"/>
+  <rect x="95" y="358" width="80" height="55" rx="3" fill="#200000" opacity="0.8"/>
+  <!-- Play icon over thumb -->
+  <circle cx="135" cy="385" r="14" fill="#000" opacity="0.5"/>
+  <polygon points="129,378 129,392 143,385" fill="#fff" opacity="0.8"/>
+  <!-- Episode text right -->
+  <text x="196" y="366" fill="#888" font-size="11" font-weight="600">E1 · Pilot</text>
+  <text x="196" y="382" fill="#f1f1f1" font-size="12" font-weight="600">To You, 2000 Years</text>
+  <text x="196" y="398" fill="#888" font-size="11">Humanity is shocked when a massive</text>
+  <text x="196" y="412" fill="#888" font-size="11">Titan appears and breaks the wall.</text>
+  <text x="196" y="428" fill="#555" font-size="10">24 min</text>
+  <!-- Progress bar at bottom (35%) -->
+  <rect x="88" y="451" width="275" height="3" rx="1.5" fill="#2a2a2a"/>
+  <rect x="88" y="451" width="96" height="3" rx="1.5" fill="#e50914"/>
+
+  <!-- Ep 2 card -->
+  <rect x="371" y="346" width="275" height="110" rx="8" fill="#111111" stroke="#1e1e1e" stroke-width="1"/>
+  <rect x="371" y="346" width="94" height="110" rx="8" fill="#1a1a1a"/>
+  <rect x="379" y="346" width="86" height="110" fill="#1a1a1a"/>
+  <rect x="378" y="358" width="80" height="55" rx="3" fill="#1a2010" opacity="0.8"/>
+  <!-- Green checkmark overlay -->
+  <circle cx="418" cy="385" r="14" fill="#48c774" opacity="0.2"/>
+  <path d="M410 385 L416 391 L427 379" stroke="#48c774" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <text x="479" y="366" fill="#888" font-size="11" font-weight="600">E2</text>
+  <text x="479" y="382" fill="#f1f1f1" font-size="12" font-weight="600">That Day</text>
+  <text x="479" y="398" fill="#888" font-size="11">Survivors of the Titan attack recall</text>
+  <text x="479" y="412" fill="#888" font-size="11">the horrors of that fateful day.</text>
+  <text x="479" y="428" fill="#555" font-size="10">24 min</text>
+  <!-- Watched full bar -->
+  <rect x="371" y="451" width="275" height="3" rx="1.5" fill="#48c774" opacity="0.4"/>
+
+  <!-- Ep 3 card -->
+  <rect x="654" y="346" width="275" height="110" rx="8" fill="#111111" stroke="#1e1e1e" stroke-width="1"/>
+  <rect x="654" y="346" width="94" height="110" rx="8" fill="#1a1a1a"/>
+  <rect x="662" y="346" width="86" height="110" fill="#1a1a1a"/>
+  <rect x="661" y="358" width="80" height="55" rx="3" fill="#101820" opacity="0.8"/>
+  <circle cx="701" cy="385" r="14" fill="#000" opacity="0.5"/>
+  <polygon points="695,378 695,392 709,385" fill="#fff" opacity="0.8"/>
+  <text x="762" y="366" fill="#888" font-size="11" font-weight="600">E3</text>
+  <text x="762" y="382" fill="#f1f1f1" font-size="12" font-weight="600">A Dim Light Amid Despair</text>
+  <text x="762" y="398" fill="#888" font-size="11">Eren and other survivors enter</text>
+  <text x="762" y="412" fill="#888" font-size="11">military training to join the fight.</text>
+  <text x="762" y="428" fill="#555" font-size="10">23 min</text>
+
+  <!-- Ep 4 card -->
+  <rect x="937" y="346" width="275" height="110" rx="8" fill="#111111" stroke="#1e1e1e" stroke-width="1"/>
+  <rect x="937" y="346" width="94" height="110" rx="8" fill="#1a1a1a"/>
+  <rect x="945" y="346" width="86" height="110" fill="#1a1a1a"/>
+  <rect x="944" y="358" width="80" height="55" rx="3" fill="#181008" opacity="0.8"/>
+  <circle cx="984" cy="385" r="14" fill="#000" opacity="0.5"/>
+  <polygon points="978,378 978,392 992,385" fill="#fff" opacity="0.8"/>
+  <text x="1045" y="366" fill="#888" font-size="11" font-weight="600">E4</text>
+  <text x="1045" y="382" fill="#f1f1f1" font-size="12" font-weight="600">The Night of the Closing</text>
+  <text x="1045" y="398" fill="#888" font-size="11">Cadets prepare for graduation</text>
+  <text x="1045" y="412" fill="#888" font-size="11">and their first real deployment.</text>
+  <text x="1045" y="428" fill="#555" font-size="10">24 min</text>
+
+  <!-- Row 2 -->
+  <!-- Ep 5 card -->
+  <rect x="88" y="468" width="275" height="110" rx="8" fill="#111111" stroke="#1e1e1e" stroke-width="1"/>
+  <rect x="88" y="468" width="94" height="110" rx="8" fill="#1a1a1a"/>
+  <rect x="96" y="468" width="86" height="110" fill="#1a1a1a"/>
+  <rect x="95" y="480" width="80" height="55" rx="3" fill="#201010" opacity="0.8"/>
+  <circle cx="135" cy="507" r="14" fill="#000" opacity="0.5"/>
+  <polygon points="129,500 129,514 143,507" fill="#fff" opacity="0.8"/>
+  <text x="196" y="488" fill="#888" font-size="11" font-weight="600">E5</text>
+  <text x="196" y="504" fill="#f1f1f1" font-size="12" font-weight="600">First Battle</text>
+  <text x="196" y="520" fill="#888" font-size="11">The cadets face their first real</text>
+  <text x="196" y="534" fill="#888" font-size="11">combat against the Titans.</text>
+  <text x="196" y="550" fill="#555" font-size="10">24 min</text>
+
+  <!-- Ep 6 card -->
+  <rect x="371" y="468" width="275" height="110" rx="8" fill="#111111" stroke="#1e1e1e" stroke-width="1"/>
+  <rect x="371" y="468" width="94" height="110" rx="8" fill="#1a1a1a"/>
+  <rect x="379" y="468" width="86" height="110" fill="#1a1a1a"/>
+  <rect x="378" y="480" width="80" height="55" rx="3" fill="#0a1820" opacity="0.8"/>
+  <circle cx="418" cy="507" r="14" fill="#000" opacity="0.5"/>
+  <polygon points="412,500 412,514 426,507" fill="#fff" opacity="0.8"/>
+  <text x="479" y="488" fill="#888" font-size="11" font-weight="600">E6</text>
+  <text x="479" y="504" fill="#f1f1f1" font-size="12" font-weight="600">The World the Girl Saw</text>
+  <text x="479" y="520" fill="#888" font-size="11">Mikasa remembers her past and</text>
+  <text x="479" y="534" fill="#888" font-size="11">how she met Eren as a child.</text>
+  <text x="479" y="550" fill="#555" font-size="10">23 min</text>
+
+  <!-- Ep 7 card -->
+  <rect x="654" y="468" width="275" height="110" rx="8" fill="#111111" stroke="#1e1e1e" stroke-width="1"/>
+  <rect x="654" y="468" width="94" height="110" rx="8" fill="#1a1a1a"/>
+  <rect x="662" y="468" width="86" height="110" fill="#1a1a1a"/>
+  <rect x="661" y="480" width="80" height="55" rx="3" fill="#200808" opacity="0.8"/>
+  <circle cx="701" cy="507" r="14" fill="#000" opacity="0.5"/>
+  <polygon points="695,500 695,514 709,507" fill="#fff" opacity="0.8"/>
+  <text x="762" y="488" fill="#888" font-size="11" font-weight="600">E7</text>
+  <text x="762" y="504" fill="#f1f1f1" font-size="12" font-weight="600">Small Blade</text>
+  <text x="762" y="520" fill="#888" font-size="11">The remaining cadets work to</text>
+  <text x="762" y="534" fill="#888" font-size="11">hold the supply depot from Titans.</text>
+  <text x="762" y="550" fill="#555" font-size="10">24 min</text>
+
+  <!-- Ep 8 card -->
+  <rect x="937" y="468" width="275" height="110" rx="8" fill="#111111" stroke="#1e1e1e" stroke-width="1"/>
+  <rect x="937" y="468" width="94" height="110" rx="8" fill="#1a1a1a"/>
+  <rect x="945" y="468" width="86" height="110" fill="#1a1a1a"/>
+  <rect x="944" y="480" width="80" height="55" rx="3" fill="#101820" opacity="0.8"/>
+  <circle cx="984" cy="507" r="14" fill="#000" opacity="0.5"/>
+  <polygon points="978,500 978,514 992,507" fill="#fff" opacity="0.8"/>
+  <text x="1045" y="488" fill="#888" font-size="11" font-weight="600">E8</text>
+  <text x="1045" y="504" fill="#f1f1f1" font-size="12" font-weight="600">I Can Hear His Heartbeat</text>
+  <text x="1045" y="520" fill="#888" font-size="11">Armin forms a desperate plan</text>
+  <text x="1045" y="534" fill="#888" font-size="11">to save the remaining soldiers.</text>
+  <text x="1045" y="550" fill="#555" font-size="10">23 min</text>
+
+  <!-- Bottom section background -->
+  <rect x="68" y="590" width="1212" height="130" fill="#0a0a0a"/>
+  <!-- Load more -->
+  <rect x="524" y="600" width="234" height="38" rx="19" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1"/>
+  <text x="641" y="624" fill="#888" font-size="13" text-anchor="middle">Load more episodes ↓</text>
+</svg>

@@ -14,7 +14,7 @@ const DEFAULTS: AppSettings = {
   introSkipMode: 'prompt',
   ratingCountry: 'US',
   maxAgeRating: 18,
-  playerSource: 'vidsrc',
+  playerSource: 'autoembed',
   subtitlesEnabled: true,
   defaultSubtitleLang: 'en',
   homeViewMode: 'carousel',

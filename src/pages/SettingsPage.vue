@@ -21,7 +21,7 @@ const ratingCountry = ref('US')
 const maxAgeRating = ref(18)
 
 // ---- Playback ----
-const playerSource = ref('vidsrc')
+const playerSource = ref('autoembed')
 const watchedThreshold = ref(3)
 const introSkipMode = ref<'off' | 'auto' | 'prompt'>('prompt')
 

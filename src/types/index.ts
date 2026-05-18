@@ -119,6 +119,8 @@ export interface PlayerSource {
   getMovieUrl: (id: number) => string
   getTvUrl: (id: number, season: number, ep: number) => string
   supportsProgress: boolean
+  /** When true the iframe gets sandbox without allow-popups, blocking ad popups. */
+  sandboxed: boolean
 }
 
 export interface AnilistMedia {

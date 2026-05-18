@@ -17,18 +17,20 @@ export function imgUrl(path: string | null | undefined, size = 'w500'): string {
 
 export const PLAYER_SOURCES: PlayerSource[] = [
   {
-    id: 'vidsrc',
-    label: 'VidSrc',
-    getMovieUrl: (id) => `https://vidsrc.cc/v2/embed/movie/${id}`,
-    getTvUrl: (id, season, ep) => `https://vidsrc.cc/v2/embed/tv/${id}/${season}/${ep}`,
-    supportsProgress: false,
-  },
-  {
     id: 'autoembed',
     label: 'AutoEmbed',
     getMovieUrl: (id) => `https://player.autoembed.cc/embed/movie/${id}`,
     getTvUrl: (id, season, ep) => `https://player.autoembed.cc/embed/tv/${id}/${season}/${ep}`,
     supportsProgress: false,
+    sandboxed: true,
+  },
+  {
+    id: 'vidsrc',
+    label: 'VidSrc',
+    getMovieUrl: (id) => `https://vidsrc.cc/v2/embed/movie/${id}`,
+    getTvUrl: (id, season, ep) => `https://vidsrc.cc/v2/embed/tv/${id}/${season}/${ep}`,
+    supportsProgress: false,
+    sandboxed: true,
   },
   {
     id: 'vidbinge',
@@ -36,6 +38,7 @@ export const PLAYER_SOURCES: PlayerSource[] = [
     getMovieUrl: (id) => `https://embed.vidbinge.com/embed/movie/${id}`,
     getTvUrl: (id, season, ep) => `https://embed.vidbinge.com/embed/tv/${id}/${season}/${ep}`,
     supportsProgress: false,
+    sandboxed: true,
   },
   {
     id: 'vidsrc-icu',
@@ -43,6 +46,7 @@ export const PLAYER_SOURCES: PlayerSource[] = [
     getMovieUrl: (id) => `https://vidsrc.icu/embed/movie/${id}`,
     getTvUrl: (id, season, ep) => `https://vidsrc.icu/embed/tv/${id}/${season}/${ep}`,
     supportsProgress: false,
+    sandboxed: true,
   },
   {
     id: 'vidsrc-mov',
@@ -50,6 +54,7 @@ export const PLAYER_SOURCES: PlayerSource[] = [
     getMovieUrl: (id) => `https://vidsrc.mov/embed/movie/${id}`,
     getTvUrl: (id, season, ep) => `https://vidsrc.mov/embed/tv/${id}/${season}/${ep}`,
     supportsProgress: false,
+    sandboxed: true,
   },
   {
     id: 'superembed',
@@ -57,13 +62,16 @@ export const PLAYER_SOURCES: PlayerSource[] = [
     getMovieUrl: (id) => `https://multiembed.mov/?video_id=${id}&tmdb=1`,
     getTvUrl: (id, season, ep) => `https://multiembed.mov/?video_id=${id}&tmdb=1&s=${season}&e=${ep}`,
     supportsProgress: false,
+    sandboxed: true,
   },
   {
+    // Videasy detects sandbox="..." and refuses to load — must run unsandboxed.
     id: 'videasy',
-    label: 'Videasy',
+    label: 'Videasy ⚠️',
     getMovieUrl: (id) => `https://player.videasy.net/movie/${id}`,
     getTvUrl: (id, season, ep) => `https://player.videasy.net/tv/${id}/${season}/${ep}`,
     supportsProgress: true,
+    sandboxed: false,
   },
   {
     id: '2embed',
@@ -71,6 +79,7 @@ export const PLAYER_SOURCES: PlayerSource[] = [
     getMovieUrl: (id) => `https://www.2embed.cc/embed/${id}`,
     getTvUrl: (id, season, ep) => `https://www.2embed.cc/embedtv/${id}&s=${season}&e=${ep}`,
     supportsProgress: false,
+    sandboxed: true,
   },
   {
     id: 'allmanga',
@@ -78,6 +87,7 @@ export const PLAYER_SOURCES: PlayerSource[] = [
     getMovieUrl: (_id) => '',
     getTvUrl: (id, _season, _ep) => `https://allmanga.to/embed/${id}`,
     supportsProgress: false,
+    sandboxed: true,
   },
 ]
 

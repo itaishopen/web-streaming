@@ -70,12 +70,12 @@ async function loadTrending() {
   offline.value = false
 
   // Check 24h localStorage cache
-  const cacheDate = storage.get<string>(STORAGE_KEYS.TRENDING_CACHE_DATE, null)
+  const cacheDate = storage.get<string>(STORAGE_KEYS.TRENDING_CACHE_DATE) ?? null
   const cache = storage.get<{
     movies: MediaItem[]
     series: MediaItem[]
     topRated: MediaItem[]
-  }>(STORAGE_KEYS.TRENDING_CACHE, null)
+  }>(STORAGE_KEYS.TRENDING_CACHE) ?? null
 
   if (cache && isWithin24Hours(cacheDate ?? null)) {
     trendingMovies.value = cache.movies

@@ -324,8 +324,6 @@ export class SetupScreen extends LitElement {
               .value=${this._apiKey}
               ?disabled=${this._checking}
               @input=${this._handleInput}
-              @focus=${this._handleFocus}
-              @blur=${this._handleBlur}
               @keydown=${this._handleKeyDown}
             />
           </div>

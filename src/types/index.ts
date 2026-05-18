@@ -95,7 +95,7 @@ export interface Network {
   logo_path: string | null
 }
 
-export interface SearchResult extends MediaItem {
+export interface SearchResult extends Omit<MediaItem, 'media_type'> {
   media_type: MediaType | 'person'
 }
 

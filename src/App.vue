@@ -26,7 +26,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, watch } from 'vue'
+import { ref, computed, onMounted, watch, provide } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useSettings } from './composables/useSettings'
 import { useLibrary } from './composables/useLibrary'
@@ -77,6 +77,7 @@ function showToast(msg: string) {
   toast.value = msg
   setTimeout(() => { toast.value = '' }, 2500)
 }
+provide('showToast', showToast)
 
 onMounted(() => {
   loadSettings()

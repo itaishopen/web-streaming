@@ -1,6 +1,6 @@
 import { ref } from 'vue'
 import { tmdbFetch } from '../utils/api'
-import { storage, STORAGE_KEYS } from '../utils/storage'
+import { storage } from '../utils/storage'
 import type { SearchResult } from '../types'
 
 interface TMDBSearchResponse {

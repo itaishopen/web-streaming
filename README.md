@@ -1,4 +1,4 @@
-# Streambert Web
+# webstream Web
 
 A browser-based, mobile-friendly streaming frontend for movies, TV shows, and anime — ad-free and tracker-free. Runs entirely client-side and can be hosted on GitHub Pages.
 
@@ -99,7 +99,7 @@ npm test
 
 ### What this application is
 
-Streambert Web is an **open-source media browser and frontend interface**. It is a client-side web application that:
+webstream Web is an **open-source media browser and frontend interface**. It is a client-side web application that:
 
 - Fetches **metadata only** (titles, posters, descriptions, ratings) from [The Movie Database (TMDB) API](https://www.themoviedb.org/documentation/api), under TMDB's free API terms
 - **Embeds third-party video players** via `<iframe>` — it does not host, store, proxy, upload, or distribute any video content itself

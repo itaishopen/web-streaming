@@ -19,6 +19,7 @@ const similarItems = ref<MediaItem[]>([])
 const loading = ref(true)
 const offline = ref(false)
 const apiError = ref<string | null>(null)
+const setupDismissed = ref(false)
 const homeRows = ref<HomeRow[]>([])
 const viewMode = ref<'carousel' | 'list'>('carousel')
 
@@ -141,6 +142,7 @@ function progressPct(item: MediaItem): number {
 function onSetupComplete(e: Event) {
   const key = (e as CustomEvent<{ apiKey: string }>).detail?.apiKey ?? ''
   saveSettings('apiKey', key)
+  setupDismissed.value = true
   apiError.value = null
   if (key) loadTrending()
   else loading.value = false
@@ -162,7 +164,7 @@ onMounted(() => {
 <template>
   <div class="home-page">
     <!-- No API Key: setup screen -->
-    <template v-if="!settings.apiKey">
+    <template v-if="!settings.apiKey && !setupDismissed">
       <div class="setup-wrapper">
         <setup-screen @setup-complete="onSetupComplete"></setup-screen>
       </div>
@@ -237,10 +239,10 @@ onMounted(() => {
                 v-for="item in inProgress"
                 :key="`${item.media_type}_${item.id}`"
                 class="progress-card"
-                @click="navigate(item)"
+                @card-click="(e: Event) => navigate((e as CustomEvent).detail)"
               >
                 <media-card
-                  :item="JSON.stringify(item)"
+                  :item="item"
                   :progress="progressPct(item)"
                 ></media-card>
               </div>
@@ -252,16 +254,16 @@ onMounted(() => {
             <h2 class="section-title">Similar To What You Watched</h2>
             <div v-if="viewMode === 'carousel'">
               <trending-carousel
-                :items="JSON.stringify(similarItems)"
-                @item-click="navigate"
+                :items="similarItems"
+                @item-select="(e: Event) => navigate((e as CustomEvent).detail)"
               ></trending-carousel>
             </div>
             <div v-else class="cards-grid">
               <media-card
                 v-for="item in similarItems"
                 :key="`${item.media_type}_${item.id}`"
-                :item="JSON.stringify(item)"
-                @click="navigate(item)"
+                :item="item"
+                @card-click="(e: Event) => navigate((e as CustomEvent).detail)"
               ></media-card>
             </div>
           </div>
@@ -271,16 +273,16 @@ onMounted(() => {
             <h2 class="section-title">Trending Movies</h2>
             <div v-if="viewMode === 'carousel'">
               <trending-carousel
-                :items="JSON.stringify(trendingMovies)"
-                @item-click="navigate"
+                :items="trendingMovies"
+                @item-select="(e: Event) => navigate((e as CustomEvent).detail)"
               ></trending-carousel>
             </div>
             <div v-else class="cards-grid">
               <media-card
                 v-for="item in trendingMovies"
                 :key="item.id"
-                :item="JSON.stringify(item)"
-                @click="navigate(item)"
+                :item="item"
+                @card-click="(e: Event) => navigate((e as CustomEvent).detail)"
               ></media-card>
             </div>
           </div>
@@ -290,16 +292,16 @@ onMounted(() => {
             <h2 class="section-title">Trending Series</h2>
             <div v-if="viewMode === 'carousel'">
               <trending-carousel
-                :items="JSON.stringify(trendingSeries)"
-                @item-click="navigate"
+                :items="trendingSeries"
+                @item-select="(e: Event) => navigate((e as CustomEvent).detail)"
               ></trending-carousel>
             </div>
             <div v-else class="cards-grid">
               <media-card
                 v-for="item in trendingSeries"
                 :key="item.id"
-                :item="JSON.stringify(item)"
-                @click="navigate(item)"
+                :item="item"
+                @card-click="(e: Event) => navigate((e as CustomEvent).detail)"
               ></media-card>
             </div>
           </div>
@@ -309,16 +311,16 @@ onMounted(() => {
             <h2 class="section-title">Top Rated</h2>
             <div v-if="viewMode === 'carousel'">
               <trending-carousel
-                :items="JSON.stringify(topRated)"
-                @item-click="navigate"
+                :items="topRated"
+                @item-select="(e: Event) => navigate((e as CustomEvent).detail)"
               ></trending-carousel>
             </div>
             <div v-else class="cards-grid">
               <media-card
                 v-for="item in topRated"
                 :key="`${item.media_type}_${item.id}`"
-                :item="JSON.stringify(item)"
-                @click="navigate(item)"
+                :item="item"
+                @card-click="(e: Event) => navigate((e as CustomEvent).detail)"
               ></media-card>
             </div>
           </div>

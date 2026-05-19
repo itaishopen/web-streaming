@@ -1,5 +1,11 @@
 import { test, expect } from '@playwright/test'
-import { seedApiKey, mockSearchResults, mockMovieDetails } from './helpers'
+import {
+  seedApiKey,
+  mockSearchResults,
+  mockSearchResultsWithAuth,
+  mockMovieDetails,
+  assertLitAttributeDelivered,
+} from './helpers'
 
 test.describe('Search Modal', () => {
   test('opens with Ctrl+F keyboard shortcut', async ({ page }) => {
@@ -7,26 +13,16 @@ test.describe('Search Modal', () => {
     await mockSearchResults(page)
     await page.goto('/')
 
-    // Wait for the page to settle
     await page.waitForLoadState('networkidle')
-
-    // Press Ctrl+F to open the search modal
     await page.keyboard.press('Control+f')
 
-    // The search-modal custom element should be visible (its open prop becomes true)
-    // The modal renders an overlay when open=true
-    const overlay = page.locator('search-modal .overlay').first()
-
-    // Since Lit renders to shadow DOM, we check the shadow root
     const modalVisible = await page.evaluate(() => {
       const modal = document.querySelector('search-modal')
       if (!modal || !modal.shadowRoot) return false
-      const overlay = modal.shadowRoot.querySelector('.overlay')
-      return overlay !== null
+      return modal.shadowRoot.querySelector('.overlay') !== null
     })
     expect(modalVisible).toBe(true)
 
-    // The input inside the shadow DOM should be focused
     const inputFocused = await page.evaluate(() => {
       const modal = document.querySelector('search-modal')
       const input = modal?.shadowRoot?.querySelector('.search-input')
@@ -41,20 +37,15 @@ test.describe('Search Modal', () => {
     await page.goto('/')
 
     await page.waitForLoadState('networkidle')
-
-    // Open search with Ctrl+F
     await page.keyboard.press('Control+f')
 
-    // Wait for modal to open
     await page.waitForFunction(() => {
       const modal = document.querySelector('search-modal')
       return modal?.shadowRoot?.querySelector('.overlay') !== null
     }, { timeout: 3000 })
 
-    // Press Escape to close
     await page.keyboard.press('Escape')
 
-    // Modal overlay should no longer be in the shadow DOM
     await page.waitForFunction(() => {
       const modal = document.querySelector('search-modal')
       return modal?.shadowRoot?.querySelector('.overlay') === null
@@ -73,17 +64,13 @@ test.describe('Search Modal', () => {
     await page.goto('/')
 
     await page.waitForLoadState('networkidle')
-
-    // Open search modal
     await page.keyboard.press('Control+f')
 
-    // Wait for modal to open
     await page.waitForFunction(() => {
       const modal = document.querySelector('search-modal')
       return modal?.shadowRoot?.querySelector('.search-input') !== null
     }, { timeout: 3000 })
 
-    // Type into the search input via evaluate (shadow DOM)
     await page.evaluate(() => {
       const modal = document.querySelector('search-modal')
       const input = modal?.shadowRoot?.querySelector('.search-input') as HTMLInputElement | null
@@ -93,17 +80,14 @@ test.describe('Search Modal', () => {
       }
     })
 
-    // Wait for debounce (the component uses 380ms debounce)
     await page.waitForTimeout(500)
 
-    // Wait for search results to appear in the shadow DOM
     await page.waitForFunction(() => {
       const modal = document.querySelector('search-modal')
       const results = modal?.shadowRoot?.querySelectorAll('.result-item')
       return results && results.length > 0
     }, { timeout: 5000 })
 
-    // 'Search Result Movie' should appear in the shadow DOM
     const hasResult = await page.evaluate(() => {
       const modal = document.querySelector('search-modal')
       const items = modal?.shadowRoot?.querySelectorAll('.result-item')
@@ -117,7 +101,6 @@ test.describe('Search Modal', () => {
     await seedApiKey(page)
     await mockSearchResults(page)
     await mockMovieDetails(page, 999)
-    // Also mock release_dates for movie 999
     await page.route('**/api.themoviedb.org/3/movie/999**', async (route) => {
       await route.fulfill({
         status: 200,
@@ -142,19 +125,14 @@ test.describe('Search Modal', () => {
     })
 
     await page.goto('/')
-
     await page.waitForLoadState('networkidle')
-
-    // Open search modal
     await page.keyboard.press('Control+f')
 
-    // Wait for the search input to be ready
     await page.waitForFunction(() => {
       const modal = document.querySelector('search-modal')
       return modal?.shadowRoot?.querySelector('.search-input') !== null
     }, { timeout: 3000 })
 
-    // Type 'test' to search
     await page.evaluate(() => {
       const modal = document.querySelector('search-modal')
       const input = modal?.shadowRoot?.querySelector('.search-input') as HTMLInputElement | null
@@ -164,7 +142,6 @@ test.describe('Search Modal', () => {
       }
     })
 
-    // Wait for debounce and results
     await page.waitForTimeout(500)
     await page.waitForFunction(() => {
       const modal = document.querySelector('search-modal')
@@ -172,14 +149,76 @@ test.describe('Search Modal', () => {
       return results && results.length > 0
     }, { timeout: 5000 })
 
-    // Click the first result
     await page.evaluate(() => {
       const modal = document.querySelector('search-modal')
       const firstResult = modal?.shadowRoot?.querySelector('.result-item') as HTMLButtonElement | null
       firstResult?.click()
     })
 
-    // URL should change to include movie/999
     await expect(page).toHaveURL(/#\/movie\/999/, { timeout: 5000 })
+  })
+
+  /**
+   * Verifies that search-modal receives the API key via the correct 'api-key'
+   * attribute (kebab-case). Catches the Vue→Lit attribute name mismatch where
+   * Lit's default observed attribute is 'apikey' (lowercased), not 'api-key'.
+   *
+   * If this attribute is not delivered, search-modal fires fetch() with no
+   * Authorization header and gets 401s — returning zero results silently.
+   */
+  test('search-modal has api-key attribute set to stored API key', async ({ page }) => {
+    const TEST_KEY = 'fake-tmdb-key-for-testing'
+    await seedApiKey(page, TEST_KEY)
+    await mockSearchResults(page)
+    await page.goto('/')
+
+    await page.waitForLoadState('networkidle')
+
+    // Assert the attribute name is exactly 'api-key' (not 'apikey' or 'apiKey')
+    await assertLitAttributeDelivered(page, 'search-modal', 'api-key', TEST_KEY)
+  })
+
+  /**
+   * Verifies search requests carry the Authorization Bearer token.
+   * Uses mockSearchResultsWithAuth which returns 401 when the token is absent,
+   * so the test fails with no results instead of silently passing.
+   */
+  test('search requests include Authorization header with stored API key', async ({ page }) => {
+    const TEST_KEY = 'fake-tmdb-key-for-testing'
+    await seedApiKey(page, TEST_KEY)
+    await mockSearchResultsWithAuth(page, TEST_KEY)
+    await page.goto('/')
+
+    await page.waitForLoadState('networkidle')
+    await page.keyboard.press('Control+f')
+
+    await page.waitForFunction(() => {
+      const modal = document.querySelector('search-modal')
+      return modal?.shadowRoot?.querySelector('.search-input') !== null
+    }, { timeout: 3000 })
+
+    await page.evaluate(() => {
+      const modal = document.querySelector('search-modal')
+      const input = modal?.shadowRoot?.querySelector('.search-input') as HTMLInputElement | null
+      if (input) {
+        input.value = 'test'
+        input.dispatchEvent(new Event('input', { bubbles: true, composed: true }))
+      }
+    })
+
+    await page.waitForTimeout(500)
+
+    // If the Authorization header was missing, mock returns 401 and no results appear
+    await page.waitForFunction(() => {
+      const modal = document.querySelector('search-modal')
+      const results = modal?.shadowRoot?.querySelectorAll('.result-item')
+      return results && results.length > 0
+    }, { timeout: 5000 })
+
+    const count = await page.evaluate(() => {
+      const modal = document.querySelector('search-modal')
+      return modal?.shadowRoot?.querySelectorAll('.result-item')?.length ?? 0
+    })
+    expect(count).toBeGreaterThan(0)
   })
 })

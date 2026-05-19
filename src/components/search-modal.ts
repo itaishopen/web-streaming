@@ -2,7 +2,7 @@ import { LitElement, html, css, nothing } from 'lit'
 import { customElement, property, state } from 'lit/decorators.js'
 import type { SearchResult } from '../types'
 
-const HISTORY_KEY = 'streambert_searchHistory'
+const HISTORY_KEY = 'webstream_searchHistory'
 const MAX_HISTORY = 12
 const TMDB_BASE = 'https://api.themoviedb.org/3'
 const TMDB_IMG_BASE = 'https://image.tmdb.org/t/p'
@@ -14,7 +14,8 @@ function imgUrl(path: string | null | undefined, size = 'w92'): string {
 
 @customElement('search-modal')
 export class SearchModal extends LitElement {
-  @property({ type: String }) apiKey = ''
+  // attribute: 'api-key' so Lit observes the kebab-case attribute Vue sets
+  @property({ type: String, attribute: 'api-key' }) apiKey = ''
   @property({ type: Boolean }) open = false
   @property({ type: Boolean }) offline = false
 

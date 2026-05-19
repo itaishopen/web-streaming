@@ -28,6 +28,14 @@ const config: Config = {
     '!src/**/*.d.ts',
   ],
   coverageReporters: ['text', 'lcov'],
+  coverageThreshold: {
+    global: {
+      statements: 80,
+      branches: 80,
+      functions: 80,
+      lines: 80,
+    },
+  },
   setupFiles: ['<rootDir>/src/__tests__/setup.ts'],
 }
 

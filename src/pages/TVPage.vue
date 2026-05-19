@@ -449,8 +449,8 @@ watch(playing, (val) => {
         <iframe
           v-if="playerUrl"
           :src="playerUrl"
-          sandbox="allow-scripts allow-same-origin allow-forms allow-presentation"
           allowfullscreen
+          allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
           @load="onIframeLoad"
         ></iframe>
         <div v-else class="player-unavailable">

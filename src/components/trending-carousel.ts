@@ -4,10 +4,29 @@ import type { MediaItem } from '../types'
 
 @customElement('trending-carousel')
 export class TrendingCarousel extends LitElement {
-  @property({ type: Array }) items: MediaItem[] = []
+  // Accept both a plain JS array (Vue DOM property) and a JSON string (attribute fallback)
+  @property({
+    converter: {
+      fromAttribute: (v: string | null): MediaItem[] => {
+        if (!v) return []
+        try { return JSON.parse(v) as MediaItem[] } catch { return [] }
+      },
+    },
+  })
+  items: MediaItem[] | string = []
+
   @property({ type: String }) title = ''
   @property({ type: String }) titleHighlight = ''
   @property({ type: Object }) ratingsMap: Record<number, string> = {}
+
+  // Normalise to always return an array regardless of how Vue passed items
+  private get _items(): MediaItem[] {
+    const raw = this.items
+    if (typeof raw === 'string') {
+      try { return JSON.parse(raw) as MediaItem[] } catch { return [] }
+    }
+    return Array.isArray(raw) ? raw : []
+  }
 
   @state() private _activeIndex = 0
   @state() private _animating = false
@@ -32,7 +51,7 @@ export class TrendingCarousel extends LitElement {
   private _startAuto() {
     this._stopAuto()
     this._autoTimer = setInterval(() => {
-      if (!this._interacting && this.items.length > 1) {
+      if (!this._interacting && this._items.length > 1) {
         this._advance(1)
       }
     }, 4000)
@@ -54,8 +73,8 @@ export class TrendingCarousel extends LitElement {
   }
 
   private _advance(delta: number) {
-    if (this._animating || this.items.length === 0) return
-    const len = this.items.length
+    if (this._animating || this._items.length === 0) return
+    const len = this._items.length
     this._activeIndex = ((this._activeIndex + delta) % len + len) % len
     this._animating = true
     setTimeout(() => { this._animating = false }, 380)
@@ -113,12 +132,12 @@ export class TrendingCarousel extends LitElement {
   }
 
   private _getVisibleCards(): Array<{ item: MediaItem; offset: number; index: number }> {
-    const len = this.items.length
+    const len = this._items.length
     if (len === 0) return []
     const results: Array<{ item: MediaItem; offset: number; index: number }> = []
     for (let offset = -2; offset <= 2; offset++) {
       const idx = ((this._activeIndex + offset) % len + len) % len
-      results.push({ item: this.items[idx], offset, index: idx })
+      results.push({ item: this._items[idx], offset, index: idx })
     }
     return results
   }
@@ -150,13 +169,13 @@ export class TrendingCarousel extends LitElement {
   }
 
   private _renderDots() {
-    const len = this.items.length
+    const len = this._items.length
     if (len <= 1) return nothing
     const MAX_DOTS = 10
     if (len <= MAX_DOTS) {
       return html`
         <div class="dots">
-          ${this.items.map((_, i) => html`
+          ${this._items.map((_, i) => html`
             <button
               class="dot ${i === this._activeIndex ? 'dot--active' : ''}"
               aria-label=${`Go to item ${i + 1}`}
@@ -166,7 +185,7 @@ export class TrendingCarousel extends LitElement {
         </div>
       `
     }
-    const visibleDots = this.items.slice(0, MAX_DOTS)
+    const visibleDots = this._items.slice(0, MAX_DOTS)
     const remaining = len - MAX_DOTS
     return html`
       <div class="dots">
@@ -378,7 +397,7 @@ export class TrendingCarousel extends LitElement {
   `
 
   render() {
-    if (this.items.length === 0) return nothing
+    if (this._items.length === 0) return nothing
 
     const visibleCards = this._getVisibleCards()
 
@@ -423,7 +442,7 @@ export class TrendingCarousel extends LitElement {
                     z-index: ${zIndex};
                     pointer-events: ${Math.abs(offset) <= 1 ? 'auto' : 'none'};
                   "
-                  @click=${() => offset === 0 ? this._handleCardClick(item) : this._goTo(((this._activeIndex + offset) % this.items.length + this.items.length) % this.items.length)}
+                  @click=${() => offset === 0 ? this._handleCardClick(item) : this._goTo(((this._activeIndex + offset) % this._items.length + this._items.length) % this._items.length)}
                   title=${title}
                 >
                   ${posterUrl

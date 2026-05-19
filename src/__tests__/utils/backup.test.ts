@@ -163,9 +163,9 @@ describe('importBackup()', () => {
     expect(storage.get(STORAGE_KEYS.SAVED)).toEqual([{ id: 5 }])
     // history / progress / watched should NOT have been written (they were null/falsy)
     const writtenKeys = setItemSpy.mock.calls.map((c) => c[0])
-    expect(writtenKeys).not.toContain('streambert_' + STORAGE_KEYS.HISTORY)
-    expect(writtenKeys).not.toContain('streambert_' + STORAGE_KEYS.PROGRESS)
-    expect(writtenKeys).not.toContain('streambert_' + STORAGE_KEYS.WATCHED)
+    expect(writtenKeys).not.toContain('webstream_' + STORAGE_KEYS.HISTORY)
+    expect(writtenKeys).not.toContain('webstream_' + STORAGE_KEYS.PROGRESS)
+    expect(writtenKeys).not.toContain('webstream_' + STORAGE_KEYS.WATCHED)
 
     setItemSpy.mockRestore()
   })

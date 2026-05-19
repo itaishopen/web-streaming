@@ -17,24 +17,45 @@ export function imgUrl(path: string | null | undefined, size = 'w500'): string {
 
 export const PLAYER_SOURCES: PlayerSource[] = [
   {
-    id: 'vidsrc',
-    label: 'VidSrc',
-    getMovieUrl: (id) => `https://vidsrc.to/embed/movie/${id}`,
-    getTvUrl: (id, season, ep) => `https://vidsrc.to/embed/tv/${id}/${season}/${ep}`,
+    id: 'autoembed',
+    label: 'AutoEmbed',
+    getMovieUrl: (id) => `https://player.autoembed.cc/embed/movie/${id}`,
+    getTvUrl: (id, season, ep) => `https://player.autoembed.cc/embed/tv/${id}/${season}/${ep}`,
     supportsProgress: false,
   },
   {
-    id: 'videasy',
-    label: 'Videasy',
-    getMovieUrl: (id) => `https://player.videasy.net/movie/${id}`,
-    getTvUrl: (id, season, ep) => `https://player.videasy.net/tv/${id}/${season}/${ep}`,
-    supportsProgress: true,
+    id: 'vidsrc',
+    label: 'VidSrc',
+    getMovieUrl: (id) => `https://vidsrc.cc/v2/embed/movie/${id}`,
+    getTvUrl: (id, season, ep) => `https://vidsrc.cc/v2/embed/tv/${id}/${season}/${ep}`,
+    supportsProgress: false,
   },
   {
-    id: '2embed',
-    label: '2Embed',
-    getMovieUrl: (id) => `https://www.2embed.cc/embed/${id}`,
-    getTvUrl: (id, season, ep) => `https://www.2embed.cc/embedtv/${id}&s=${season}&e=${ep}`,
+    id: 'vidbinge',
+    label: 'VidBinge',
+    getMovieUrl: (id) => `https://embed.vidbinge.com/embed/movie/${id}`,
+    getTvUrl: (id, season, ep) => `https://embed.vidbinge.com/embed/tv/${id}/${season}/${ep}`,
+    supportsProgress: false,
+  },
+  {
+    id: 'vidsrc-icu',
+    label: 'VidSrc ICU',
+    getMovieUrl: (id) => `https://vidsrc.icu/embed/movie/${id}`,
+    getTvUrl: (id, season, ep) => `https://vidsrc.icu/embed/tv/${id}/${season}/${ep}`,
+    supportsProgress: false,
+  },
+  {
+    id: 'vidsrc-mov',
+    label: 'VidSrc MOV',
+    getMovieUrl: (id) => `https://vidsrc.mov/embed/movie/${id}`,
+    getTvUrl: (id, season, ep) => `https://vidsrc.mov/embed/tv/${id}/${season}/${ep}`,
+    supportsProgress: false,
+  },
+  {
+    id: 'superembed',
+    label: 'SuperEmbed',
+    getMovieUrl: (id) => `https://multiembed.mov/?video_id=${id}&tmdb=1`,
+    getTvUrl: (id, season, ep) => `https://multiembed.mov/?video_id=${id}&tmdb=1&s=${season}&e=${ep}`,
     supportsProgress: false,
   },
   {
@@ -45,6 +66,11 @@ export const PLAYER_SOURCES: PlayerSource[] = [
     supportsProgress: false,
   },
 ]
+
+export const DEFAULT_PLAYER_SOURCE = 'autoembed'
+
+/** Valid source IDs — used to migrate stale localStorage values. */
+export const VALID_SOURCE_IDS = new Set(PLAYER_SOURCES.map((s) => s.id))
 
 // ---------------------------------------------------------------------------
 // Request queue — max 4 concurrent

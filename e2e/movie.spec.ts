@@ -18,7 +18,7 @@ test.describe('Movie Page', () => {
     await expect(page.locator('.genres')).toContainText('Action', { timeout: 5000 })
 
     // Runtime: 120 minutes formatted as "2h"
-    await expect(page.locator('.meta-row')).toContainText('120', { timeout: 5000 })
+    await expect(page.locator('.meta-row')).toContainText('2h', { timeout: 5000 })
   })
 
   test('watch button starts the player', async ({ page }) => {

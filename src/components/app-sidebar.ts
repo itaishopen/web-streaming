@@ -294,7 +294,7 @@ export class AppSidebar extends LitElement {
     return html`
       <!-- Desktop sidebar -->
       <nav class="sidebar">
-        <div class="logo">Streambert</div>
+        <div class="logo">webstream</div>
 
         <div class="nav-group">
           ${this.canGoBack ? html`

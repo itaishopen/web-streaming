@@ -299,7 +299,7 @@ export class SetupScreen extends LitElement {
               <path d="M5 3l14 9-14 9V3z"/>
             </svg>
           </div>
-          <div class="logo-text">Stream<span>bert</span></div>
+          <div class="logo-text"><span>Web</span>Stream</div>
         </div>
 
         <!-- Instructions -->

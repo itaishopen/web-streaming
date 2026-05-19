@@ -19,6 +19,7 @@ const similarItems = ref<MediaItem[]>([])
 const loading = ref(true)
 const offline = ref(false)
 const apiError = ref<string | null>(null)
+const setupDismissed = ref(false)
 const homeRows = ref<HomeRow[]>([])
 const viewMode = ref<'carousel' | 'list'>('carousel')
 
@@ -141,6 +142,7 @@ function progressPct(item: MediaItem): number {
 function onSetupComplete(e: Event) {
   const key = (e as CustomEvent<{ apiKey: string }>).detail?.apiKey ?? ''
   saveSettings('apiKey', key)
+  setupDismissed.value = true
   apiError.value = null
   if (key) loadTrending()
   else loading.value = false
@@ -162,7 +164,7 @@ onMounted(() => {
 <template>
   <div class="home-page">
     <!-- No API Key: setup screen -->
-    <template v-if="!settings.apiKey">
+    <template v-if="!settings.apiKey && !setupDismissed">
       <div class="setup-wrapper">
         <setup-screen @setup-complete="onSetupComplete"></setup-screen>
       </div>

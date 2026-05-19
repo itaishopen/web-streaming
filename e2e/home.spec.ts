@@ -11,6 +11,10 @@ test.describe('Home Page', () => {
   test('shows trending content after API key is set', async ({ page }) => {
     await seedApiKey(page)
     await mockTmdbTrending(page)
+    // Force list mode so media-card elements appear (carousel mode uses trending-carousel)
+    await page.addInitScript(() => {
+      localStorage.setItem('streambert_homeViewMode', JSON.stringify('list'))
+    })
     await page.goto('/')
 
     await expect(page.locator('.spotlight-section')).toBeVisible({ timeout: 10000 })
@@ -39,6 +43,10 @@ test.describe('Home Page', () => {
     await seedApiKey(page)
     await mockTmdbTrending(page)
     await mockMovieDetails(page, 1000)
+    // Force list mode so media-card elements appear (carousel mode uses trending-carousel)
+    await page.addInitScript(() => {
+      localStorage.setItem('streambert_homeViewMode', JSON.stringify('list'))
+    })
     await page.goto('/')
 
     await page.locator('media-card').first().waitFor({ state: 'visible', timeout: 10000 })
@@ -50,19 +58,21 @@ test.describe('Home Page', () => {
   test('shows offline banner when network unavailable', async ({ page }) => {
     await seedApiKey(page)
 
+    // Override navigator.onLine before app code runs, and clear cache so it actually tries to fetch
     await page.addInitScript(() => {
       localStorage.removeItem('streambert_trendingCache')
       localStorage.removeItem('streambert_trendingCacheDate')
+      Object.defineProperty(navigator, 'onLine', { get: () => false, configurable: true })
     })
 
-    await page.context().setOffline(true)
+    // Abort all TMDB API requests so fetch() throws (simulates network failure)
+    await page.route('**/api.themoviedb.org/**', (route) => route.abort('failed'))
+
     await page.goto('/')
 
     await expect(
       page.locator('.offline-banner, [role="alert"]').filter({ hasText: /offline|internet/i })
     ).toBeVisible({ timeout: 10000 })
-
-    await page.context().setOffline(false)
   })
 
   test('home layout rows are configurable - continue watching hidden when row not visible', async ({ page }) => {

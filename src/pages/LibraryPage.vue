@@ -19,6 +19,7 @@ const {
   isWatched,
   clearHistory,
   clearProgress,
+  loadLibrary,
 } = useLibrary()
 
 const router = useRouter()
@@ -105,6 +106,7 @@ function confirmClearProgress() {
 }
 
 onMounted(() => {
+  loadLibrary()
   sort.value = storage.get<string>(STORAGE_KEYS.WATCHLIST_SORT, 'manual') ?? 'manual'
 })
 </script>

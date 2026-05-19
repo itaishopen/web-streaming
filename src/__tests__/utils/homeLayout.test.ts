@@ -140,7 +140,7 @@ describe('loadStartPage()', () => {
 
   it('returns stored value when set via storage', () => {
     // Use storage.set via the underlying storage util to pre-populate
-    localStorage.setItem('streambert_startPage', JSON.stringify('library'))
+    localStorage.setItem('webstream_startPage', JSON.stringify('library'))
     expect(loadStartPage()).toBe('library')
   })
 })

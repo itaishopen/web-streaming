@@ -13,7 +13,7 @@ test.describe('Home Page', () => {
     await mockTmdbTrending(page)
     // Force list mode so media-card elements appear (carousel mode uses trending-carousel)
     await page.addInitScript(() => {
-      localStorage.setItem('streambert_homeViewMode', JSON.stringify('list'))
+      localStorage.setItem('webstream_homeViewMode', JSON.stringify('list'))
     })
     await page.goto('/')
 
@@ -45,7 +45,7 @@ test.describe('Home Page', () => {
     await mockMovieDetails(page, 1000)
     // Force list mode so media-card elements appear (carousel mode uses trending-carousel)
     await page.addInitScript(() => {
-      localStorage.setItem('streambert_homeViewMode', JSON.stringify('list'))
+      localStorage.setItem('webstream_homeViewMode', JSON.stringify('list'))
     })
     await page.goto('/')
 
@@ -60,8 +60,8 @@ test.describe('Home Page', () => {
 
     // Override navigator.onLine before app code runs, and clear cache so it actually tries to fetch
     await page.addInitScript(() => {
-      localStorage.removeItem('streambert_trendingCache')
-      localStorage.removeItem('streambert_trendingCacheDate')
+      localStorage.removeItem('webstream_trendingCache')
+      localStorage.removeItem('webstream_trendingCacheDate')
       Object.defineProperty(navigator, 'onLine', { get: () => false, configurable: true })
     })
 
@@ -87,7 +87,7 @@ test.describe('Home Page', () => {
         { id: 'series',    label: 'Trending Series',    visible: true },
         { id: 'toprated',  label: 'Top Rated',          visible: true },
       ]
-      localStorage.setItem('streambert_homeLayout', JSON.stringify(layout))
+      localStorage.setItem('webstream_homeLayout', JSON.stringify(layout))
     })
 
     await page.goto('/')

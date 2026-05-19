@@ -139,7 +139,7 @@ test.describe('Library Page', () => {
         { id: 2002, title: 'Alpha Movie', media_type: 'movie', poster_path: null, backdrop_path: null, overview: '', vote_average: 9.0 },
         { id: 2003, title: 'Middle Movie', media_type: 'movie', poster_path: null, backdrop_path: null, overview: '', vote_average: 7.0 },
       ]
-      localStorage.setItem('streambert_saved', JSON.stringify(items))
+      localStorage.setItem('webstream_saved', JSON.stringify(items))
     })
 
     await page.goto('/#/library')

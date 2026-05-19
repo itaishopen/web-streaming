@@ -80,9 +80,9 @@
   <!-- Overlay gradient -->
   <rect x="0" y="44" width="640" height="310" fill="url(#spotOverlay)"/>
 
-  <!-- Streambert logo top left (in spotlight area) -->
+  <!-- webstream logo top left (in spotlight area) -->
   <polygon points="22,58 22,74 36,66" fill="#e50914"/>
-  <text x="44" y="72" fill="#f1f1f1" font-size="16" font-weight="700" letter-spacing="0.5">streambert</text>
+  <text x="44" y="72" fill="#f1f1f1" font-size="16" font-weight="700" letter-spacing="0.5">webstream</text>
 
   <!-- Search icon top right -->
   <circle cx="594" cy="66" r="9" fill="none" stroke="#f1f1f1" stroke-width="1.8"/>

@@ -1,4 +1,4 @@
-const PREFIX = 'streambert_'
+const PREFIX = 'webstream_'
 
 export const storage = {
   get<T>(key: string, fallback?: T): T | undefined {

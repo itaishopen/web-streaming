@@ -3,21 +3,21 @@ import { Page, expect } from '@playwright/test'
 // Seeds localStorage with a fake API key so setup screen is skipped
 export async function seedApiKey(page: Page, key = 'fake-tmdb-key-for-testing'): Promise<void> {
   await page.addInitScript((k) => {
-    localStorage.setItem('streambert_apikey', JSON.stringify(k))
+    localStorage.setItem('webstream_apikey', JSON.stringify(k))
   }, key)
 }
 
 // Seeds a saved item into library
 export async function seedSavedItem(page: Page, item: Record<string, unknown>): Promise<void> {
   await page.addInitScript((i) => {
-    localStorage.setItem('streambert_saved', JSON.stringify([i]))
+    localStorage.setItem('webstream_saved', JSON.stringify([i]))
   }, item)
 }
 
 // Seeds watch history
 export async function seedHistory(page: Page, entry: Record<string, unknown>): Promise<void> {
   await page.addInitScript((e) => {
-    localStorage.setItem('streambert_history', JSON.stringify([e]))
+    localStorage.setItem('webstream_history', JSON.stringify([e]))
   }, entry)
 }
 
@@ -25,7 +25,7 @@ export async function seedHistory(page: Page, entry: Record<string, unknown>): P
 export async function seedProgress(page: Page, key: string, pct: number): Promise<void> {
   await page.addInitScript(([k, p]) => {
     const prog = { watched: p * 60, duration: 100 * 60, pct: p, updatedAt: Date.now() }
-    localStorage.setItem('streambert_progress', JSON.stringify({ [k]: prog }))
+    localStorage.setItem('webstream_progress', JSON.stringify({ [k]: prog }))
   }, [key, pct] as [string, number])
 }
 

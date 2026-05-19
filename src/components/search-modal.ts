@@ -2,7 +2,7 @@ import { LitElement, html, css, nothing } from 'lit'
 import { customElement, property, state } from 'lit/decorators.js'
 import type { SearchResult } from '../types'
 
-const HISTORY_KEY = 'streambert_searchHistory'
+const HISTORY_KEY = 'webstream_searchHistory'
 const MAX_HISTORY = 12
 const TMDB_BASE = 'https://api.themoviedb.org/3'
 const TMDB_IMG_BASE = 'https://image.tmdb.org/t/p'

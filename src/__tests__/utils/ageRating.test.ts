@@ -3,8 +3,8 @@ import { certToMinAge, isRestricted, fetchMovieRating, fetchTVRating } from '../
 // Ensure localStorage returns 'US' for the rating country key
 beforeEach(() => {
   localStorage.clear()
-  // The storage utility uses 'streambert_ratingCountry' as the key
-  localStorage.setItem('streambert_ratingCountry', JSON.stringify('US'))
+  // The storage utility uses 'webstream_ratingCountry' as the key
+  localStorage.setItem('webstream_ratingCountry', JSON.stringify('US'))
   jest.clearAllMocks()
 })
 
@@ -110,7 +110,7 @@ describe('fetchMovieRating()', () => {
   })
 
   it('uses the preferred country result when available', async () => {
-    localStorage.setItem('streambert_ratingCountry', JSON.stringify('DE'))
+    localStorage.setItem('webstream_ratingCountry', JSON.stringify('DE'))
     const mockResponse = {
       results: [
         {
@@ -133,7 +133,7 @@ describe('fetchMovieRating()', () => {
   })
 
   it('falls back to US result when preferred country not found', async () => {
-    localStorage.setItem('streambert_ratingCountry', JSON.stringify('FR'))
+    localStorage.setItem('webstream_ratingCountry', JSON.stringify('FR'))
     const mockResponse = {
       results: [
         {
@@ -178,7 +178,7 @@ describe('fetchTVRating()', () => {
   })
 
   it('uses the preferred country result for TV ratings', async () => {
-    localStorage.setItem('streambert_ratingCountry', JSON.stringify('DE'))
+    localStorage.setItem('webstream_ratingCountry', JSON.stringify('DE'))
     const mockResponse = {
       results: [
         { iso_3166_1: 'DE', rating: 'FSK 16' },

@@ -1,6 +1,6 @@
 import { storage, formatBytes, clearAppCaches, STORAGE_KEYS } from '../../utils/storage'
 
-const PREFIX = 'streambert_'
+const PREFIX = 'webstream_'
 
 describe('storage.get()', () => {
   beforeEach(() => {
@@ -79,7 +79,7 @@ describe('storage.clearAll()', () => {
     localStorage.clear()
   })
 
-  it('removes all streambert_ prefixed keys', () => {
+  it('removes all webstream_ prefixed keys', () => {
     storage.set('key1', 'a')
     storage.set('key2', 'b')
     storage.set('key3', 'c')
@@ -89,7 +89,7 @@ describe('storage.clearAll()', () => {
     expect(storage.get('key3')).toBeUndefined()
   })
 
-  it('leaves keys that do not have the streambert_ prefix untouched', () => {
+  it('leaves keys that do not have the webstream_ prefix untouched', () => {
     localStorage.setItem('other_key', 'should remain')
     storage.set('willBeCleared', 'gone')
     storage.clearAll()

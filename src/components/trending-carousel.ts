@@ -34,7 +34,6 @@ export class TrendingCarousel extends LitElement {
   private _autoTimer: ReturnType<typeof setInterval> | null = null
   private _interacting = false
   private _interactTimer: ReturnType<typeof setTimeout> | null = null
-  private _wheelLastTime = 0
   private _touchStartX = 0
   private _touchStartY = 0
 
@@ -98,19 +97,6 @@ export class TrendingCarousel extends LitElement {
   private _handleNext() {
     this._pauseAuto()
     this._advance(1)
-  }
-
-  private _handleWheel(e: WheelEvent) {
-    e.preventDefault()
-    const now = Date.now()
-    if (now - this._wheelLastTime < 350) return
-    this._wheelLastTime = now
-    this._pauseAuto()
-    if (e.deltaX > 0 || e.deltaY > 0) {
-      this._advance(1)
-    } else {
-      this._advance(-1)
-    }
   }
 
   private _handleTouchStart(e: TouchEvent) {
@@ -404,7 +390,6 @@ export class TrendingCarousel extends LitElement {
     return html`
       <div
         class="carousel-wrapper"
-        @wheel=${this._handleWheel}
         @touchstart=${this._handleTouchStart}
         @touchend=${this._handleTouchEnd}
       >

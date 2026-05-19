@@ -75,8 +75,8 @@ test.describe('Library Page', () => {
     // "Continue Watching" section heading should be visible
     await expect(page.locator('.section-title').filter({ hasText: 'Continue Watching' })).toBeVisible({ timeout: 5000 })
 
-    // The in-progress movie should appear
-    await expect(page.getByText('In Progress Movie')).toBeVisible({ timeout: 5000 })
+    // The in-progress movie should appear in the Continue Watching cards
+    await expect(page.locator('.continue-card').filter({ hasText: 'In Progress Movie' })).toBeVisible({ timeout: 5000 })
   })
 
   test('clicking a saved item navigates to correct page', async ({ page }) => {

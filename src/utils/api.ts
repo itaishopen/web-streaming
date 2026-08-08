@@ -59,6 +59,20 @@ export const PLAYER_SOURCES: PlayerSource[] = [
     supportsProgress: false,
   },
   {
+    id: 'vidlink',
+    label: 'VidLink',
+    getMovieUrl: (id) => `https://vidlink.pro/movie/${id}`,
+    getTvUrl: (id, season, ep) => `https://vidlink.pro/tv/${id}/${season}/${ep}`,
+    supportsProgress: false,
+  },
+  {
+    id: 'vidnest',
+    label: 'VidNest',
+    getMovieUrl: (id) => `https://vidnest.fun/movie/${id}`,
+    getTvUrl: (id, season, ep) => `https://vidnest.fun/tv/${id}/${season}/${ep}`,
+    supportsProgress: false,
+  },
+  {
     id: 'allmanga',
     label: 'AllManga',
     getMovieUrl: (_id) => '',
